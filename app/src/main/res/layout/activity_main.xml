@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:text="로그인 성공 !"
-        android:textColor="#26FF00"
+        android:textColor="@color/black"
         android:textSize="50sp"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
