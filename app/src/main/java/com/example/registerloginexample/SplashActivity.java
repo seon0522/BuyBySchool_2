@@ -23,6 +23,7 @@ public class SplashActivity  extends AppCompatActivity {
                 finish();
             }
         },3000);
+        // 3초 딜레이
     }
     @Override
     protected void onPause() {
