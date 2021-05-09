@@ -161,10 +161,10 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="7dp"
             android:layout_weight="1"
-            android:backgroundTint="#f0d6ff"
-            android:text="등록"
+            android:backgroundTint="#eb6c42"
+            android:text="수정"
             android:textSize="20dp"
-            android:id="@+id/upload_btn">
+            android:id="@+id/update_btn">
 
         </Button>
 
@@ -173,10 +173,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_weight="1"
-            android:backgroundTint="#f0d6ff"
+            android:backgroundTint="#eb6c42"
             android:text="취소"
             android:textSize="20dp"
-            android:id="@+id/cancel_btn">
+            android:id="@+id/cancelUpdate_btn">
 
         </Button>
 
