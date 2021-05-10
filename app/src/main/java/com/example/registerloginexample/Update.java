@@ -11,9 +11,10 @@ public class Update extends AppCompatActivity {
     Button updateBtn;
     Button cancelBtn;
 
-    public void onCreate(Bundle saveInstanceState){
+    protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_update);
+
 
         updateBtn = (Button) findViewById(R.id.update_btn);
         updateBtn.setOnClickListener(new View.OnClickListener(){

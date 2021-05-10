@@ -2,7 +2,9 @@ package com.example.registerloginexample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ public class MainListActivity extends AppCompatActivity {
 //      ***********************************************
 
     private TextView tv_id, tv_pass;
-
+    private Button button4;
 //      ***********************************************
 //      ***********************************************
 //      ******************대영 코드 ********************
@@ -31,6 +33,29 @@ public class MainListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainlist);
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
+
+        button4 = findViewById(R.id.button4);
+
+        // 등록버튼을 클릭 시 수행
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainListActivity.this, Update.class);
+                startActivity(intent);
+            }
+        });
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
 
         ListView listview = (ListView)findViewById(R.id.listView);
 
