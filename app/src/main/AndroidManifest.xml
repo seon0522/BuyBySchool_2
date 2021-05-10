@@ -32,8 +32,8 @@
 <!--        <activity android:name=".MainActivity">-->
 <!--        </activity>-->
 
-        <activity android:name=".MainListActivity">
-        </activity>
+        <activity android:name=".MainListActivity"/>
+
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Upload" />
