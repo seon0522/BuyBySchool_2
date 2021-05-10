@@ -2,6 +2,7 @@ package com.example.registerloginexample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -46,6 +47,7 @@ public class MainListActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("asdasdsdasd");
                 Intent intent = new Intent(MainListActivity.this, Upload.class);
                 startActivity(intent);
             }
@@ -57,7 +59,7 @@ public class MainListActivity extends AppCompatActivity {
 //      ***********************************************
 //      ***********************************************
 
-        ListView listview = (ListView)findViewById(R.id.listView);
+
 
         final ArrayList<String> list = new ArrayList<>();
 
@@ -76,6 +78,7 @@ public class MainListActivity extends AppCompatActivity {
         );
 
         //2. listView 객체에 adapter 객체 연결결
+        ListView listview = (ListView)findViewById(R.id.listView);
         listview.setAdapter(adapter);
 
 
