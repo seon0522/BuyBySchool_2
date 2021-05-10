@@ -46,7 +46,7 @@ public class MainListActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainListActivity.this, Update.class);
+                Intent intent = new Intent(MainListActivity.this, Upload.class);
                 startActivity(intent);
             }
         });
