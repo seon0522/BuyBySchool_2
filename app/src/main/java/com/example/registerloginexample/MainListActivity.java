@@ -1,14 +1,30 @@
 package com.example.registerloginexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
 public class MainListActivity extends AppCompatActivity {
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
+
+    private TextView tv_id, tv_pass;
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
 
     @Override
 
@@ -37,7 +53,32 @@ public class MainListActivity extends AppCompatActivity {
         //2. listView 객체에 adapter 객체 연결결
         listview.setAdapter(adapter);
 
+
+
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
+
+        setContentView(R.layout.activity_mainlist);
+        tv_id = findViewById(R.id.tv_id);
+        tv_pass = findViewById(R.id.tv_pass);
+
+
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
+        String userPass = intent.getStringExtra("userPass");
+
+        tv_id.setText(userID);
+        tv_pass.setText(userPass);
+
+//      ***********************************************
+//      ***********************************************
+//      ******************대영 코드 ********************
+//      ***********************************************
+//      ***********************************************
+
     }
-
-
 }

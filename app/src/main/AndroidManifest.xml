@@ -28,7 +28,11 @@
 <!--        <activity android:name=".RegisterActivity" />-->
 <!--        <activity android:name=".MainActivity">-->
 
-        <activity android:name=".MainActivity">
+<!--        대영(로그인화면) > 효선(메인화면) 연결하기 전 코드-->
+<!--        <activity android:name=".MainActivity">-->
+<!--        </activity>-->
+
+        <activity android:name=".MainListActivity">
         </activity>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".RegisterActivity" />
