@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // 회원가입 버튼 클릭 시 수행
         btn_register = findViewById(R.id.btn_register);
+        System.out.println("asdasdsdasd");
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

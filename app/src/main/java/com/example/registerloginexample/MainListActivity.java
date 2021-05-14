@@ -90,7 +90,8 @@ public class MainListActivity extends AppCompatActivity {
 //      ***********************************************
 //      ***********************************************
 
-        setContentView(R.layout.activity_mainlist);
+        // *************이것때문에 버튼 클릭이 안된거임**********
+//        setContentView(R.layout.activity_mainlist);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
 
