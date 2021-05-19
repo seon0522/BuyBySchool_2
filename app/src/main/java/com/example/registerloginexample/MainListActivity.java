@@ -2,7 +2,6 @@ package com.example.registerloginexample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,19 +14,10 @@ import java.util.ArrayList;
 
 public class MainListActivity extends AppCompatActivity {
 
-//      ***********************************************
-//      ***********************************************
-//      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
+    private ListView listView;
+    private ListViewAdapter adapter;
 
-    private TextView tv_id, tv_pass;
-    private Button button4;
-//      ***********************************************
-//      ***********************************************
-//      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
+    private Button upload_Btn;
 
     @Override
 
@@ -41,10 +31,10 @@ public class MainListActivity extends AppCompatActivity {
 //      ***********************************************
 //      ***********************************************
 
-        button4 = findViewById(R.id.button4);
+        upload_Btn = findViewById(R.id.upload_Btn);
 
         // 등록버튼을 클릭 시 수행
-        button4.setOnClickListener(new View.OnClickListener() {
+        upload_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("asdasdsdasd");
@@ -59,27 +49,18 @@ public class MainListActivity extends AppCompatActivity {
 //      ***********************************************
 //      ***********************************************
 
+        adapter = new ListViewAdapter();
 
-
-        final ArrayList<String> list = new ArrayList<>();
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(adapter);
 
         //총 게시글의 수 - list_num
-        int list_num = 20;
+        int list_num = 5;
         for (int i = 0; i < list_num; i++){
-            list.add("item" + i);
+            adapter.addItem("제목" + i, R.drawable.splash , "내용"+i);
+
+            adapter.notifyDataSetChanged();
         }
-
-//        ArrayList 객체와 listView 객체 연결하기 위해서 arrayAdapter사용
-//        1. arrayList 객체를 arrayapter에 연결
-        final ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                list //데이터가 저장되어 있는 Arraylist
-        );
-
-        //2. listView 객체에 adapter 객체 연결결
-        ListView listview = (ListView)findViewById(R.id.listView);
-        listview.setAdapter(adapter);
 
 
 
@@ -92,16 +73,10 @@ public class MainListActivity extends AppCompatActivity {
 
         // *************이것때문에 버튼 클릭이 안된거임**********
 //        setContentView(R.layout.activity_mainlist);
-        tv_id = findViewById(R.id.tv_id);
-        tv_pass = findViewById(R.id.tv_pass);
-
 
         Intent intent = getIntent();
         String userID = intent.getStringExtra("userID");
         String userPass = intent.getStringExtra("userPass");
-
-        tv_id.setText(userID);
-        tv_pass.setText(userPass);
 
 //      ***********************************************
 //      ***********************************************
