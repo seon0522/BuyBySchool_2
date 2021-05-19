@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
+
+<!--    listView의 각 항목을 위한 레이아웃 리소스 정의-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
