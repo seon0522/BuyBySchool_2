@@ -17,7 +17,8 @@ import java.util.List;
 
 public class MainListActivity extends AppCompatActivity {
 
-ArrayList<ListViewItem> listViewItems;
+    private ListView listView;
+    private ListViewAdapter adapter;
 
     private Button upload_Btn;
 
@@ -52,50 +53,23 @@ ArrayList<ListViewItem> listViewItems;
 //      ***********************************************
 //      ***********************************************
 
-        this.InitializeListViewItem();
+        adapter = new ListViewAdapter();
 
-        ListView slistView = (ListView)findViewById(R.id.listView);
-        final ListViewAdapter myAdapter = new ListViewAdapter(this, listViewItems);
+        listView = (ListView)findViewById(R.id.listView);
+        listView.setAdapter(adapter);
 
-        slistView.setAdapter(myAdapter);
+        for(int i = 0; i < 10; i++){
+            adapter.addItem("제목" + i, R.drawable.splash, "내용" + i);
+        }
 
-        slistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Toast.makeText(getApplicationContext(),myAdapter.getItem(position).getTitle(),Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainListActivity.this, Update.class);
+                startActivity(intent);
             }
         });
 
-
-
-
-
-//      ***********************************************
-//      ***********************************************
-//      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
-
-        // *************이것때문에 버튼 클릭이 안된거임**********
-//        setContentView(R.layout.activity_mainlist);
-
-        Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
-        String userPass = intent.getStringExtra("userPass");
-
-//      ***********************************************
-//      ***********************************************
-//      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
-
-    }
-
-    private void InitializeListViewItem() {
-        listViewItems = new ArrayList<ListViewItem>();
-
-        listViewItems.add(new ListViewItem(R.drawable.splash, "제목1", "내용1"));
-        listViewItems.add(new ListViewItem(R.drawable.splash, "제목2", "내용2"));
-        listViewItems.add(new ListViewItem(R.drawable.splash, "제목3", "내용3"));
+        adapter.notifyDataSetChanged();
     }
 }
