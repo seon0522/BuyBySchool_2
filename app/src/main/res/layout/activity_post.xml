@@ -62,7 +62,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/postChange_btn"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
@@ -70,11 +70,11 @@
 
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/back_btn"
                 android:layout_width="130dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="50dp"
-                android:text="삭제" />
+                android:text="뒤로" />
 
 
         </LinearLayout>

@@ -65,7 +65,7 @@ public class MainListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(MainListActivity.this, Update.class);
+                Intent intent = new Intent(MainListActivity.this, post.class);
                 startActivity(intent);
             }
         });
