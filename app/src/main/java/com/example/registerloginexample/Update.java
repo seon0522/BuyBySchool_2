@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Update extends AppCompatActivity {
@@ -15,6 +16,8 @@ public class Update extends AppCompatActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_update);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         updateBtn = (Button) findViewById(R.id.update_btn);
         updateBtn.setOnClickListener(new View.OnClickListener(){

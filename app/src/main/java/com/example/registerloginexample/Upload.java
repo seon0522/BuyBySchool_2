@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Upload extends AppCompatActivity {
@@ -16,6 +17,9 @@ public class Upload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         cancelBtn = (Button) findViewById(R.id.cancelUpload_btn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {

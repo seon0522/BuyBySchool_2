@@ -1,5 +1,6 @@
 package com.example.registerloginexample;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_mainlist);
         tv_id = findViewById(R.id.tv_id);
         tv_pass = findViewById(R.id.tv_pass);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
         Intent intent = getIntent();

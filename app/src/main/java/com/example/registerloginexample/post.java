@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class post extends AppCompatActivity {
@@ -17,6 +18,9 @@ public class post extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
 
         postChange_btn = (Button) findViewById(R.id.postChange_btn);

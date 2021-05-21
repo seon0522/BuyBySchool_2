@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class MainListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainlist);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 //      ***********************************************
 //      ***********************************************
 //      ******************대영 코드 ********************
@@ -59,7 +62,7 @@ public class MainListActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         for(int i = 0; i < 10; i++){
-            adapter.addItem("제목" + i, R.drawable.splash, "내용" + i);
+            adapter.addItem("제목" + i, R.drawable.splash3, "내용" + i);
         }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

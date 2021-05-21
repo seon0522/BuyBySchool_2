@@ -102,6 +102,7 @@
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:text="등록"
+            android:backgroundTint="@color/mainColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
