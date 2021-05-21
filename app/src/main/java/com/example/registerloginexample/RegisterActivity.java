@@ -20,7 +20,7 @@ import org.json.JSONObject;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_name, et_age;
-    private Button btn_register;
+    private Button btn_register,btn_register_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // 액티비티 시작시 처음으로 실행되는 생명주기!
@@ -75,8 +75,16 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
+        btn_register_back = findViewById(R.id.btn_register_back);
+        System.out.println("취소 버튼 누름");
+        btn_register_back.setOnClickListener(new View.OnClickListener(){
 
-
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 
