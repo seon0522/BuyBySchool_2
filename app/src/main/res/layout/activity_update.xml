@@ -8,7 +8,8 @@
     android:padding="10dp"
     tools:context=".Update"
     >
-
+<!--현재 안쓰이고 있는 xml 입니다!! 그치만 삭제하지 말아주세요 ㅠㅠ
+새별 이가.. -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -127,6 +127,7 @@
                 android:layout_gravity="right"
                 android:ems="10"
                 android:hint="가격을 설정해주세요"
+                android:inputType="number"
                 android:id="@+id/priceText"></EditText>
 
         </LinearLayout>

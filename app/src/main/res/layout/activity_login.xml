@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:background="#00ff0000"
         android:backgroundTint="@color/mainColor"
-        android:text="계정이 없으신가용? 지금 회원가입하기!"
+        android:text="계정이 없으신가요? 지금 회원가입하기!"
         android:textColor="#D9643D"
         app:layout_constraintEnd_toEndOf="@+id/et_pass"
         app:layout_constraintHorizontal_bias="0.0"
