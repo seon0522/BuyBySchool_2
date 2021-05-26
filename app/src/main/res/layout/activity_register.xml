@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_pass" />
 
     <EditText
-        android:id="@+id/et_age"
+        android:id="@+id/et_nickname"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -65,7 +65,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
-        android:hint="학번"
+        android:hint="닉네임"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="@+id/et_name"
         app:layout_constraintStart_toStartOf="@+id/et_name"
@@ -82,10 +82,10 @@
         android:layout_marginRight="100dp"
         android:backgroundTint="@color/mainColor"
         android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="@+id/et_age"
+        app:layout_constraintEnd_toEndOf="@+id/et_nickname"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_age" />
+        app:layout_constraintStart_toStartOf="@+id/et_nickname"
+        app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
     <Button
         android:id="@+id/btn_register_back"
