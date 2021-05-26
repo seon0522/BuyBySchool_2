@@ -22,7 +22,7 @@ public class UploadRequest extends StringRequest {
         map.put("authorName", authorName);
         map.put("detailMemo",detailMemo);
         map.put("priceSetting",priceSetting + "");
-        map.put("DATE","2021-02-02");
+//        map.put("DATE","2021-02-02");
 
     }
 
