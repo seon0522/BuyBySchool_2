@@ -2,6 +2,7 @@ package com.example.registerloginexample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +34,7 @@ public class MainListActivity extends AppCompatActivity {
     private ListViewAdapter adapter;
 
     private Button upload_Btn;
+    private String address = "http://meanzoo.dothome.co.kr/List.php";
 
 
     @Override
@@ -32,11 +45,8 @@ public class MainListActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-//      ***********************************************
-//      ***********************************************
+
 //      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
 
         upload_Btn = findViewById(R.id.upload_Btn);
 
@@ -50,20 +60,52 @@ public class MainListActivity extends AppCompatActivity {
             }
         });
 
-//      ***********************************************
-//      ***********************************************
 //      ******************대영 코드 ********************
-//      ***********************************************
-//      ***********************************************
+
 
         adapter = new ListViewAdapter();
 
         listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        for(int i = 0; i < 10; i++){
-            adapter.addItem("제목" + i, R.drawable.splash3, "내용" + i);
-        }
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address,null,
+                new Response.Listener<JSONObject>() {
+//              성공시 반환
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            JSONArray jsonData = response.getJSONArray("response");
+                            for(int i = 0; i < jsonData.length(); i++){
+                                String title = jsonData.getJSONObject(i).getString("TITLE");
+//                                가격이랑 저자 출력 안 됨..X
+                                String price = jsonData.getJSONObject(i).getString("PRICE");
+                                String writer = jsonData.getJSONObject(i).getString("WRITER");
+
+                                adapter.addItem(title,R.drawable.splash3,price,writer);
+                            }
+//                            String id = response.getString("name");
+//                            String recordDate = response.getString("email");
+//                            JSONObject distance = response.getJSONObject("phone");
+
+                        }catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                },new Response.ErrorListener() {
+            //              실패시 반환
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        queue.add(jsonObjectRequest);
+
+
+//        for(int i = 0; i < 10; i++){
+//            adapter.addItem("제목" + i, R.drawable.splash3, "내용" + i);
+//        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -24,6 +24,7 @@ public class ListViewAdapter extends BaseAdapter {
     private ImageView iconImageView;
     private TextView titleTextView;
     private TextView contentTextView;
+    private TextView priceTextView;
 
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<>();
 
@@ -67,9 +68,11 @@ public class ListViewAdapter extends BaseAdapter {
 //        ImageView imageView = (ImageView)view.findViewById(R.id.icon);
 //        TextView title = (TextView)view.findViewById(R.id.title);
 //        TextView text = (TextView)view.findViewById(R.id.text);
+
         titleTextView = (TextView)convertView.findViewById(R.id.title);
         iconImageView = (ImageView) convertView.findViewById(R.id.icon);
         contentTextView = (TextView) convertView.findViewById(R.id.text);
+        priceTextView = (TextView)convertView.findViewById(R.id.price);
 
         ListViewItem mlistViewItem = listViewItemList.get(position);
 
@@ -77,16 +80,18 @@ public class ListViewAdapter extends BaseAdapter {
         iconImageView.setImageResource(mlistViewItem.getIcon());
         titleTextView.setText(mlistViewItem.getTitle());
         contentTextView.setText(mlistViewItem.getContent());
+        priceTextView.setText(mlistViewItem.getPrice());
 
         return convertView;
     }
 
-    public void addItem(String title, int icon, String content){
+    public void addItem(String title, int icon, String content,String price){
         ListViewItem item = new ListViewItem();
 
         item.setTitle(title);
         item.setContent(content);
         item.setIcon(icon);
+        item.setPrice(price);
 
         listViewItemList.add(item);
     }
