@@ -12,8 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.registerloginexample.databinding.ListviewItemBinding;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,22 +77,21 @@ public class ListViewAdapter extends BaseAdapter {
         contentTextView = (TextView) convertView.findViewById(R.id.text);
         priceTextView = (TextView)convertView.findViewById(R.id.price);
 
-        TextView ccon = (TextView) convertView.findViewById(R.id.ccontent);
-        TextView ppri = (TextView) convertView.findViewById(R.id.pprice);
+
 
         ListViewItem mlistViewItem = listViewItemList.get(position);
 
         Log.i("뭐냐","왜이래");
         iconImageView.setImageResource(mlistViewItem.getIcon());
         titleTextView.setText(mlistViewItem.getTitle());
-        ccon.setText(mlistViewItem.getContent());
+        contentTextView.setText(mlistViewItem.getContent());
 
         Log.i("뭐냐",mlistViewItem.getTitle());
         Log.i("뭐냐",mlistViewItem.getPrice()+"");
         Log.i("뭐냐",mlistViewItem.getContent());
 
 
-        ppri.setText(mlistViewItem.getPrice()+"");
+        priceTextView.setText(mlistViewItem.getPrice()+"");
 
         return convertView;
     }
