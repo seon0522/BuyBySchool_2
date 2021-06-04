@@ -5,7 +5,7 @@ public class ListViewItem {
     private int iconDrawavle;
     private String contentStr;
     private String titleStr;
-    private String PriceStr;
+    private int priceInt;
 
     public void setTitle(String title){
         titleStr = title;
@@ -16,8 +16,8 @@ public class ListViewItem {
     public void setContent(String content){
         contentStr = content;
     }
-    public void setPrice(String Price){
-        PriceStr = Price;
+    public void setPrice(int Price){
+        priceInt = Price;
     }
 
     public int getIcon(){
@@ -29,8 +29,8 @@ public class ListViewItem {
     public String getTitle(){
         return this.titleStr;
     }
-    public String getPrice(){
-        return this.PriceStr;
+    public int getPrice(){
+        return this.priceInt;
     }
 
 }

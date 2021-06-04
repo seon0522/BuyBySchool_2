@@ -47,6 +47,20 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/splash3" />
 
+                <TextView
+                    android:id="@+id/pprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/ccontent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TextView" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"

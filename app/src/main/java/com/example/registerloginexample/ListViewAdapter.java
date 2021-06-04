@@ -1,6 +1,7 @@
 package com.example.registerloginexample;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,9 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return listViewItemList.get(position);
+
+//        Log.i("TAG",listViewItemList.get(position));
+                return listViewItemList.get(position);
     }
 
     @Override
@@ -74,19 +77,34 @@ public class ListViewAdapter extends BaseAdapter {
         contentTextView = (TextView) convertView.findViewById(R.id.text);
         priceTextView = (TextView)convertView.findViewById(R.id.price);
 
+        TextView ccon = (TextView) convertView.findViewById(R.id.ccontent);
+        TextView ppri = (TextView) convertView.findViewById(R.id.pprice);
+
         ListViewItem mlistViewItem = listViewItemList.get(position);
 
-
+        Log.i("뭐냐","왜이래");
         iconImageView.setImageResource(mlistViewItem.getIcon());
         titleTextView.setText(mlistViewItem.getTitle());
-        contentTextView.setText(mlistViewItem.getContent());
-        priceTextView.setText(mlistViewItem.getPrice());
+        ccon.setText(mlistViewItem.getContent());
+
+        Log.i("뭐냐",mlistViewItem.getTitle());
+        Log.i("뭐냐",mlistViewItem.getPrice()+"");
+        Log.i("뭐냐",mlistViewItem.getContent());
+
+
+        ppri.setText(mlistViewItem.getPrice()+"");
 
         return convertView;
     }
 
-    public void addItem(String title, int icon, String content,String price){
+    public void addItem(String title, int icon,int price,String content){
         ListViewItem item = new ListViewItem();
+        Log.i("check",price+content);
+
+
+        Log.i("addItem",title);
+        Log.i("addItem",price+"");
+        Log.i("addItem",content);
 
         item.setTitle(title);
         item.setContent(content);

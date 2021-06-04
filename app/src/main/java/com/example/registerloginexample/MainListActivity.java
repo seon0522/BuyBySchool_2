@@ -65,35 +65,36 @@ public class MainListActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter();
 
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address,null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
                 new Response.Listener<JSONObject>() {
-//              성공시 반환
+                    //              성공시 반환
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonData = response.getJSONArray("response");
-                            for(int i = 0; i < jsonData.length(); i++){
+                            for (int i = 0; i < jsonData.length(); i++) {
+
+                                Log.i("data", response.toString());
                                 String title = jsonData.getJSONObject(i).getString("TITLE");
-//                                가격이랑 저자 출력 안 됨..X
-                                String price = jsonData.getJSONObject(i).getString("PRICE");
+                                int price = jsonData.getJSONObject(i).getInt("PRICE");
                                 String writer = jsonData.getJSONObject(i).getString("WRITER");
 
-                                adapter.addItem(title,R.drawable.splash3,price,writer);
+                                adapter.addItem(title, R.drawable.splash3, price, writer);
                             }
 //                            String id = response.getString("name");
 //                            String recordDate = response.getString("email");
 //                            JSONObject distance = response.getJSONObject("phone");
 
-                        }catch (JSONException e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         adapter.notifyDataSetChanged();
                     }
-                },new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             //              실패시 반환
             @Override
             public void onErrorResponse(VolleyError error) {
