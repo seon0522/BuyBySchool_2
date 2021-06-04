@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.registerloginexample.databinding.ActivityMainlistBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,28 +31,29 @@ import java.util.List;
 
 public class MainListActivity extends AppCompatActivity {
 
-    private ListView listView;
+
     private ListViewAdapter adapter;
 
-    private Button upload_Btn;
+
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
+
+    private ActivityMainlistBinding binding;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainlist);
+        binding = ActivityMainlistBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
 //      ******************대영 코드 ********************
 
-        upload_Btn = findViewById(R.id.upload_Btn);
-
         // 등록버튼을 클릭 시 수행
-        upload_Btn.setOnClickListener(new View.OnClickListener() {
+        binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("asdasdsdasd");
@@ -65,8 +67,7 @@ public class MainListActivity extends AppCompatActivity {
 
         adapter = new ListViewAdapter();
 
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        binding.listView.setAdapter(adapter);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
@@ -104,11 +105,7 @@ public class MainListActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);
 
 
-//        for(int i = 0; i < 10; i++){
-//            adapter.addItem("제목" + i, R.drawable.splash3, "내용" + i);
-//        }
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
                 Intent intent = new Intent(MainListActivity.this, post.class);

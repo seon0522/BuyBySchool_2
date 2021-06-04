@@ -7,29 +7,35 @@ public class ListViewItem {
     private String titleStr;
     private int priceInt;
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         titleStr = title;
     }
-    public void setIcon(int icon){
+
+    public void setIcon(int icon) {
         iconDrawavle = icon;
     }
-    public void setContent(String content){
+
+    public void setContent(String content) {
         contentStr = content;
     }
-    public void setPrice(int Price){
+
+    public void setPrice(int Price) {
         priceInt = Price;
     }
 
-    public int getIcon(){
+    public int getIcon() {
         return this.iconDrawavle;
     }
-    public String getContent(){
+
+    public String getContent() {
         return this.contentStr;
     }
-    public String getTitle(){
+
+    public String getTitle() {
         return this.titleStr;
     }
-    public int getPrice(){
+
+    public int getPrice() {
         return this.priceInt;
     }
 

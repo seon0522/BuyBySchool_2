@@ -13,35 +13,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.registerloginexample.databinding.ActivityUpdateBinding;
+import com.example.registerloginexample.databinding.ActivityUploadBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Upload extends AppCompatActivity {
-    Button uploadBtn;
-    Button cancelBtn;
 
-    EditText bookText;
-    EditText authorText;
-    EditText priceText;
-    EditText memo;
-
+    private ActivityUploadBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload);
+        binding = ActivityUploadBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        bookText = (EditText) findViewById(R.id.bookText);
-        authorText = (EditText) findViewById(R.id.authorText);
-        priceText = (EditText) findViewById(R.id.priceText);
-        memo = (EditText) findViewById(R.id.memo);
-
-        cancelBtn = (Button) findViewById(R.id.cancelUpload_btn);
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
+        binding.cancelUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "등록을 취소합니다", Toast.LENGTH_SHORT).show();
@@ -49,19 +40,18 @@ public class Upload extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        uploadBtn = (Button) findViewById(R.id.upload_btn);
 
 //        업로드 버튼 -----------------------------------------------------
 
-        uploadBtn.setOnClickListener(new View.OnClickListener() {
+        binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                String bookName = bookText.getText().toString();
-                String authorName = authorText.getText().toString();
-                int priceSetting = Integer.parseInt(priceText.getText().toString());
-                String detailMemo = memo.getText().toString();
+                String bookName = binding.bookText.getText().toString();
+                String authorName = binding.authorText.getText().toString();
+                int priceSetting = Integer.parseInt(binding.priceText.getText().toString());
+                String detailMemo = binding.memo.getText().toString();
                 String DATA = "2021-05-21";
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

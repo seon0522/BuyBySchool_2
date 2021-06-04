@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.registerloginexample.databinding.ActivityRegisterBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,10 +23,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText et_id, et_pass, et_name, et_nickname;
     private Button btn_register,btn_register_back;
 
+    private ActivityRegisterBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { // 액티비티 시작시 처음으로 실행되는 생명주기!
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -37,16 +41,14 @@ public class RegisterActivity extends AppCompatActivity {
         et_nickname = findViewById(R.id.et_nickname);
 
         // 회원가입 버튼 클릭 시 수행
-        btn_register = findViewById(R.id.btn_register);
-        System.out.println("asdasdsdasd");
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
-                String userID = et_id.getText().toString();
-                String userPass = et_pass.getText().toString();
-                String userDe = et_name.getText().toString();
-                String userName = et_nickname.getText().toString();
+                String userID = binding.etId.getText().toString();
+                String userPass = binding.etPass.getText().toString();
+                String userDe = binding.etName.getText().toString();
+                String userName = binding.etNickname.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -75,9 +77,9 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-        btn_register_back = findViewById(R.id.btn_register_back);
+
         System.out.println("취소 버튼 누름");
-        btn_register_back.setOnClickListener(new View.OnClickListener(){
+        binding.btnRegisterBack.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
