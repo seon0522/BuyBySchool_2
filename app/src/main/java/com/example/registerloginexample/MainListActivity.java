@@ -91,6 +91,7 @@ public class MainListActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 String filterText = editable.toString();
 //                에러가 나서 밑의 코드로 변경
+//                좀 더 알아봐야 할 듯
 //                try {
 //                    if(filterText.length() > 0){
 ////                    입력값이 있을 경우
