@@ -42,6 +42,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return filteredItemList.size();
     }
 
+
 //    지정한 위치에 있는 데이터와 관계된 아이템의 ID를 리턴
     @Override
     public long getItemId(int position) {

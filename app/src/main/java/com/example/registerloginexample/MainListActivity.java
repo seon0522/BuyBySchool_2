@@ -90,6 +90,7 @@ public class MainListActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 String filterText = editable.toString();
+//                에러가 나서 밑의 코드로 변경
 //                try {
 //                    if(filterText.length() > 0){
 ////                    입력값이 있을 경우
@@ -105,6 +106,7 @@ public class MainListActivity extends AppCompatActivity {
             }
         });
 
+//        Json값 처리
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
                 new Response.Listener<JSONObject>() {
