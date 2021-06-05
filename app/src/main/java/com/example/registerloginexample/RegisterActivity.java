@@ -18,6 +18,9 @@ import com.example.registerloginexample.databinding.ActivityRegisterBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_id, et_pass, et_name, et_nickname;
@@ -53,14 +56,21 @@ public class RegisterActivity extends AppCompatActivity {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 회원등록에 성공한 경우
+                            if (success&&isValidEmail(userID)&&checkYoungjinEmail(userID)) { // 회원등록에 성공한 경우
+
+
+
                                 Toast.makeText(getApplicationContext(),"회원 등록에 성공하였습니다.",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
-                            } else { // 회원등록에 실패한 경우
+                            }
+
+                            else { // 회원등록에 실패한 경우
+
                                 Toast.makeText(getApplicationContext(),"회원 등록에 실패하였습니다.",Toast.LENGTH_SHORT).show();
                                 return;
                             }
@@ -71,10 +81,14 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
                 // 서버로 Volley를 이용해서 요청을 함.
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userDe,userName, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
-
+                if(isValidEmail(userID)&&checkYoungjinEmail(userID)) {
+                    RegisterRequest registerRequest = new RegisterRequest(userID, userPass, userDe, userName, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                    queue.add(registerRequest);
+                }else{
+                    Toast.makeText(getApplicationContext(),"학교 이메일을 입력 하세요.",Toast.LENGTH_SHORT).show();
+                    System.out.println("학교 이메일을 입력 하세요");
+                }
             }
         });
 
@@ -87,5 +101,26 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public boolean isValidEmail(String email) {
+        boolean err = false; String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
+
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches()) {
+            err = true;
+        }
+        return err;
+    }
+
+    public boolean checkYoungjinEmail(String email) {
+        String result = email.substring(email.lastIndexOf("@")+1);
+        // g.yju.ac.kr
+        if (result.equals("g.yju.ac.kr")){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
