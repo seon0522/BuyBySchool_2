@@ -2,6 +2,8 @@ package com.example.registerloginexample;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +36,8 @@ public class MainListActivity extends AppCompatActivity {
 
     private ListViewAdapter adapter;
 
+    private ArrayList<ListViewItem> list = new ArrayList<>();
+
 
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
@@ -65,9 +69,41 @@ public class MainListActivity extends AppCompatActivity {
 //      ******************대영 코드 ********************
 
 
+//        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
 
+//        어댑터 연결
         binding.listView.setAdapter(adapter);
+
+//        검생창에 검색어 입력시 이벤트 처리리
+        binding.Search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String filterText = editable.toString();
+//                try {
+//                    if(filterText.length() > 0){
+////                    입력값이 있을 경우
+//                        binding.listView.setFilterText(filterText);
+//                    }else {
+////                    입력값이 없을 경우
+//                        binding.listView.clearTextFilter();
+//                    }
+//                }catch (RuntimeException e){
+//                    e.getMessage();
+//                }
+                ((ListViewAdapter)binding.listView.getAdapter()).getFilter().filter(filterText);
+            }
+        });
 
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
@@ -86,9 +122,6 @@ public class MainListActivity extends AppCompatActivity {
 
                                 adapter.addItem(title, R.drawable.splash3, price, writer);
                             }
-//                            String id = response.getString("name");
-//                            String recordDate = response.getString("email");
-//                            JSONObject distance = response.getJSONObject("phone");
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -115,4 +148,5 @@ public class MainListActivity extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
+
 }
