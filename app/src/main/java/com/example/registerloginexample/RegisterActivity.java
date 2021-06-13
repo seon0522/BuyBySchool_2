@@ -70,6 +70,10 @@ public class RegisterActivity extends AppCompatActivity {
                 String userPass = binding.etPass.getText().toString();
 //                String userDe = binding.etName.getText().toString();
 
+                if (hakka.equals("학과를 선택하세요!")){
+                    Toast.makeText(getApplicationContext(),"학과를 선택 하고 가입하세요!!.",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String userDe = hakka;
                 String userName = binding.etNickname.getText().toString();
 
