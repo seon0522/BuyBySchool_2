@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -23,7 +25,10 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText et_id, et_pass, et_name, et_nickname;
+    String hakka = "";
+
+    private EditText et_id, et_pass, et_nickname;
+    private Spinner et_name;
     private Button btn_register,btn_register_back;
 
     private ActivityRegisterBinding binding;
@@ -43,6 +48,19 @@ public class RegisterActivity extends AppCompatActivity {
         et_name = findViewById(R.id.et_name);
         et_nickname = findViewById(R.id.et_nickname);
 
+        et_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                hakka = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         // 회원가입 버튼 클릭 시 수행
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
                 String userID = binding.etId.getText().toString();
                 String userPass = binding.etPass.getText().toString();
-                String userDe = binding.etName.getText().toString();
+//                String userDe = binding.etName.getText().toString();
+
+                String userDe = hakka;
                 String userName = binding.etNickname.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
