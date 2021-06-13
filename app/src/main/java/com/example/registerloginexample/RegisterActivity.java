@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"학과를 선택 하고 가입하세요!!.",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //
                 String userDe = hakka;
                 String userName = binding.etNickname.getText().toString();
 
