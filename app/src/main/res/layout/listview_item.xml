@@ -45,7 +45,7 @@
                     android:id="@+id/icon"
                     android:layout_width="70dp"
                     android:layout_height="71dp"
-                    android:src="@drawable/splash3" />
+                    android:src="@drawable/splash2222" />
 
                 <TextView
                     android:id="@+id/textView2"

@@ -7,11 +7,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +24,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainListActivity extends AppCompatActivity {
 
@@ -123,7 +117,7 @@ public class MainListActivity extends AppCompatActivity {
                                 int price = jsonData.getJSONObject(i).getInt("PRICE");
                                 String writer = jsonData.getJSONObject(i).getString("WRITER");
 
-                                adapter.addItem(title, R.drawable.splash3, price, writer);
+                                adapter.addItem(title, R.drawable.splash2222, price, writer);
                             }
 
                         } catch (JSONException e) {
