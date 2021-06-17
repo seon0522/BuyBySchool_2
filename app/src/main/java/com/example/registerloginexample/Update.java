@@ -33,8 +33,6 @@ public class Update extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 String bookName = binding.bookText.getText().toString();
                 String authorName = binding.authorText.getText().toString();
                 int priceSetting = Integer.parseInt(binding.priceText.getText().toString());

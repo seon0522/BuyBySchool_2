@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,13 +39,16 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     }
 
+    @NonNull
+
     @Override
     public int getCount() {
         return filteredItemList.size();
     }
 
 
-//    지정한 위치에 있는 데이터와 관계된 아이템의 ID를 리턴
+
+    //    지정한 위치에 있는 데이터와 관계된 아이템의 ID를 리턴
     @Override
     public long getItemId(int position) {
         return position;
@@ -54,6 +59,11 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
 //        Log.i("TAG",listViewItemList.get(position));
         return filteredItemList.get(position);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     @Override
@@ -84,6 +94,14 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
 
         priceTextView.setText(mlistViewItem.getPrice() + "");
+
+        LinearLayout cmdArea = convertView.findViewById(R.id.cmdArea);
+        cmdArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), filteredItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return convertView;
     }

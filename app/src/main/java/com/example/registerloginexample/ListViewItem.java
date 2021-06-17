@@ -7,6 +7,8 @@ public class ListViewItem {
     private String titleStr;
     private int priceInt;
 
+
+
     public void setTitle(String title) {
         titleStr = title;
     }
@@ -18,6 +20,7 @@ public class ListViewItem {
     public void setContent(String content) {
         contentStr = content;
     }
+
 
     public void setPrice(int Price) {
         priceInt = Price;
@@ -38,5 +41,7 @@ public class ListViewItem {
     public int getPrice() {
         return this.priceInt;
     }
+
+//    public void getPosition(){ return this.position;}
 
 }

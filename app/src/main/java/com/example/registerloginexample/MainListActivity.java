@@ -138,8 +138,15 @@ public class MainListActivity extends AppCompatActivity {
         binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                Intent intent = new Intent(MainListActivity.this, post.class);
-                startActivity(intent);
+
+                Log.i("포지션값",""+position);
+                Log.i("포지션값",""+adapter.getItemId(position));
+                Log.i("포지션값",""+ parent.getAdapter().getItem(position));
+
+
+
+//                Intent intent = new Intent(MainListActivity.this, post.class);
+//                startActivity(intent);
             }
         });
 

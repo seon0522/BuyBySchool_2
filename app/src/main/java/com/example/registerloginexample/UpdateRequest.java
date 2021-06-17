@@ -22,6 +22,7 @@ public class UpdateRequest extends StringRequest {
         map.put("authorName", authorName);
         map.put("detailMemo",detailMemo);
         map.put("priceSetting",priceSetting + "");
+//        map.put(/* 여러가지 */);
 //        map.put("DATE","2021-02-02");
 
     }
