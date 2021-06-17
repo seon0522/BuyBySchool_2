@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,9 @@ public class MainListActivity extends AppCompatActivity {
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
 
+
     private ActivityMainlistBinding binding;
+    private TextView tv_id, tv_pass;
 
     @Override
 
@@ -65,6 +68,10 @@ public class MainListActivity extends AppCompatActivity {
 
 //        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
+
+//      인텐트!
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
 
 //        어댑터 연결
         binding.listView.setAdapter(adapter);
@@ -151,6 +158,12 @@ public class MainListActivity extends AppCompatActivity {
         });
 
         adapter.notifyDataSetChanged();
+
+
+
+
+
     }
+
 
 }
