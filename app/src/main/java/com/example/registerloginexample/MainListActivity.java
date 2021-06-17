@@ -108,6 +108,7 @@ public class MainListActivity extends AppCompatActivity {
 
 //        Json값 처리
         RequestQueue queue = Volley.newRequestQueue(this);
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
                 new Response.Listener<JSONObject>() {
                     //              성공시 반환
@@ -121,6 +122,7 @@ public class MainListActivity extends AppCompatActivity {
                                 String title = jsonData.getJSONObject(i).getString("TITLE");
                                 int price = jsonData.getJSONObject(i).getInt("PRICE");
                                 String writer = jsonData.getJSONObject(i).getString("WRITER");
+//                                int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
 
                                 adapter.addItem(title, R.drawable.splash2222, price, writer);
                             }
@@ -148,17 +150,18 @@ public class MainListActivity extends AppCompatActivity {
                 Log.i("현재 값","hello "+postItem.getTitle());
                 Log.i("현재 값","hello "+postItem.getContent());
                 Log.i("현재 값","hello "+postItem.getPrice());
+//                Log.i("현재 값","hello "+postItem.getPostNum());
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
                 intent.putExtra("Content",postItem.getContent());
                 intent.putExtra("Price",postItem.getPrice());
+//                intent.putExtra("POSTNUM",postItem.getPostNum());
                 startActivity(intent);
             }
         });
 
         adapter.notifyDataSetChanged();
-                System.out.println("---------------dldldldldldld");
     }
 
 

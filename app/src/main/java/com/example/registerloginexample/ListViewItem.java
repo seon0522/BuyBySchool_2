@@ -6,8 +6,16 @@ public class ListViewItem {
     private String contentStr;
     private String titleStr;
     private int priceInt;
+//    private int postNumInt;
 
-
+//
+//    public void setPostNum(int PostNum) {
+//        this.postNumInt = PostNum;
+//    }
+//
+//    public int getPostNum() {
+//        return this.postNumInt;
+//    }
 
     public void setTitle(String title) {
         titleStr = title;
@@ -20,7 +28,6 @@ public class ListViewItem {
     public void setContent(String content) {
         contentStr = content;
     }
-
 
     public void setPrice(int Price) {
         priceInt = Price;

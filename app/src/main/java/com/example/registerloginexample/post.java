@@ -21,6 +21,7 @@ public class post extends AppCompatActivity {
     String Title;
     String Content;
     int Price;
+    int PostNum;
 
 
     @Override
@@ -36,17 +37,15 @@ public class post extends AppCompatActivity {
         Intent intent = getIntent();
         Title = intent.getStringExtra("Title");
         Content = intent.getStringExtra("Content");
-        int defalut = 0;
-
         Price = intent.getIntExtra("Price", 0);
-        System.out.println(Price + "======================");
+//        PostNum = intent.getIntExtra("POSTNUM",0);
 
-        Log.i("posthello",Title);
+        Log.i("Price","" + Price);
+//        Log.i("posthello","" + PostNum);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(Content);
-        binding.pricePost.setText(Price);
-
+        binding.pricePost.setText(""+Price);
 
 
         binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){

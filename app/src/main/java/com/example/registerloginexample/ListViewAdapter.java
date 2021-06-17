@@ -37,14 +37,10 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     }
 
-
-
-
     @Override
     public int getCount() {
         return filteredItemList.size();
     }
-
 
 
     //    지정한 위치에 있는 데이터와 관계된 아이템의 ID를 리턴
@@ -57,7 +53,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     public Object getItem(int position) {
 
 //        Log.i("TAG",listViewItemList.get(position));
-        return filteredItemList.get(position);
+        return (Object)filteredItemList.get(position);
     }
 
     @Override
@@ -105,7 +101,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
     // mainactivity 에서 받은 값을 넣음 listvieItemlist 객체로
-    public void addItem(String title, int icon, int price, String content) {
+    public void addItem(/*int Postnum,*/String title, int icon, int price, String content) {
         ListViewItem item = new ListViewItem();
 
         Log.i("check", price + content);
@@ -114,6 +110,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         Log.i("addItem", price + "");
         Log.i("addItem", content);
 
+//        item.setPostNum(Postnum);
         item.setTitle(title);
         item.setContent(content); // price
         item.setIcon(icon);
