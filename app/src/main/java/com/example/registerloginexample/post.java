@@ -10,33 +10,39 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.registerloginexample.databinding.ActivityMainlistBinding;
 import com.example.registerloginexample.databinding.ActivityPostBinding;
 
 public class post extends AppCompatActivity {
 
-    Button postChange_btn;
-    Button back_btn;
-
 //    private ActivityMainlistBinding binding;
     private ActivityPostBinding binding;
 
+    String Title;
+    String Content;
+    int Price;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        binding = ActivityPostBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        String Title = intent.getStringExtra("Title");
+        Title = intent.getStringExtra("Title");
+        Content = intent.getStringExtra("Content");
+//        int Price = intent.getStringExtra("Price");
+
+        Log.i("posthello",Title);
 
         binding.bookText.setText(Title);
+        binding.
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        postChange_btn = (Button) findViewById(R.id.postChange_btn);
-        back_btn = (Button) findViewById(R.id.back_btn);
-
-        postChange_btn.setOnClickListener(new View.OnClickListener(){
+        binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
@@ -45,7 +51,7 @@ public class post extends AppCompatActivity {
             }
         });
 
-        back_btn.setOnClickListener(new View.OnClickListener(){
+        binding.backBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {

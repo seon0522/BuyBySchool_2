@@ -37,10 +37,7 @@ public class MainListActivity extends AppCompatActivity {
 
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
-
-
     private ActivityMainlistBinding binding;
-    private TextView tv_id, tv_pass;
 
     @Override
 
@@ -161,10 +158,6 @@ public class MainListActivity extends AppCompatActivity {
         });
 
         adapter.notifyDataSetChanged();
-
-
-
-
 
     }
 
