@@ -72,14 +72,10 @@
                 android:text="* 가격 : "
                 android:textSize="20dp"
                 android:layout_marginLeft="10dp"/>
-
-            <EditText
-                android:id="@+id/priceText_post"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="20dp"
-                android:inputType="number"
-                android:text=""/>
+            <TextView
+                android:id="@+id/pricePost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 
@@ -94,10 +90,7 @@
                 android:layout_height="40dp"
                 android:text="* 소개글"
                 android:textSize="20dp"/>
-            <TextView
-                android:id="@+id/introductionText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
 
         </LinearLayout>
 

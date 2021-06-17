@@ -37,7 +37,8 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     }
 
-    @NonNull
+
+
 
     @Override
     public int getCount() {
@@ -86,9 +87,9 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         titleTextView.setText(mlistViewItem.getTitle());
         contentTextView.setText(mlistViewItem.getContent());
 
-        Log.i("뭐냐", mlistViewItem.getTitle());
-        Log.i("뭐냐", mlistViewItem.getPrice() + "");
-        Log.i("뭐냐", mlistViewItem.getContent());
+//        Log.i("뭐냐", mlistViewItem.getTitle());
+//        Log.i("뭐냐", mlistViewItem.getPrice() + "");
+//        Log.i("뭐냐", mlistViewItem.getContent());
 
 
         priceTextView.setText(mlistViewItem.getPrice() + "");
@@ -103,7 +104,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
         return convertView;
     }
-
+    // mainactivity 에서 받은 값을 넣음 listvieItemlist 객체로
     public void addItem(String title, int icon, int price, String content) {
         ListViewItem item = new ListViewItem();
 

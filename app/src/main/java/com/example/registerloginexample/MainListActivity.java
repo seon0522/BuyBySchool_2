@@ -145,9 +145,9 @@ public class MainListActivity extends AppCompatActivity {
 
                 ListViewItem postItem = (ListViewItem) adapter.getItem(position);
 
-//                Log.i("현재 값","hello "+postItem.getTitle());
-//                Log.i("현재 값","hello "+postItem.getContent());
-//                Log.i("현재 값","hello "+postItem.getPrice());
+                Log.i("현재 값","hello "+postItem.getTitle());
+                Log.i("현재 값","hello "+postItem.getContent());
+                Log.i("현재 값","hello "+postItem.getPrice());
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
@@ -158,7 +158,7 @@ public class MainListActivity extends AppCompatActivity {
         });
 
         adapter.notifyDataSetChanged();
-
+                System.out.println("---------------dldldldldldld");
     }
 
 

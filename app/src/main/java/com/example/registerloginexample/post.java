@@ -15,12 +15,13 @@ import com.example.registerloginexample.databinding.ActivityPostBinding;
 
 public class post extends AppCompatActivity {
 
-//    private ActivityMainlistBinding binding;
+    //    private ActivityMainlistBinding binding;
     private ActivityPostBinding binding;
 
     String Title;
     String Content;
     int Price;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +30,24 @@ public class post extends AppCompatActivity {
         binding = ActivityPostBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         Intent intent = getIntent();
         Title = intent.getStringExtra("Title");
         Content = intent.getStringExtra("Content");
-//        int Price = intent.getStringExtra("Price");
+        int defalut = 0;
+
+        Price = intent.getIntExtra("Price", 0);
+        System.out.println(Price + "======================");
 
         Log.i("posthello",Title);
 
         binding.bookText.setText(Title);
-        binding.
+        binding.authorText.setText(Content);
+        binding.pricePost.setText(Price);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+
 
         binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
