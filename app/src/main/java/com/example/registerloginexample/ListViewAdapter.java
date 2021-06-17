@@ -98,9 +98,10 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         Log.i("addItem", content);
 
         item.setTitle(title);
-        item.setContent(content);
+        item.setContent(content); // price
         item.setIcon(icon);
-        item.setPrice(price);
+        item.setPrice(price); // writer
+        System.out.println("-------gettitle" + item.getTitle() + "------getprice " + item.getPrice() + "-----getcontent " + item.getContent() );
 
         listViewItemList.add(item);
     }

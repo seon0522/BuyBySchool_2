@@ -30,7 +30,7 @@ public class post extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Upload.class);
+                Intent intent = new Intent(getApplicationContext(), Update.class);
                 startActivity(intent);
             }
         });

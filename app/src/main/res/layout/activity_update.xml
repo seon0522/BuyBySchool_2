@@ -176,9 +176,9 @@
             android:layout_marginLeft="7dp"
             android:layout_weight="1"
             android:backgroundTint="#eb6c42"
-            android:text="취소"
+            android:text="삭제"
             android:textSize="20dp"
-            android:id="@+id/cancelUpdate_btn">
+            android:id="@+id/deleteUpdate_btn">
 
         </Button>
 

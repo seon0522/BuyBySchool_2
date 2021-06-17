@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class UploadRequest extends StringRequest {
 
-    final static private String URL = "http://meanzoo.dothome.co.kr/SavePost.php";
+    final static private String URL = "http://meanzoo.dothome.co.kr/0601SavePost.php";
     // 여기 고침
     private Map<String, String> map;
 
