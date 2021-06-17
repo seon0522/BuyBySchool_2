@@ -36,9 +36,6 @@ public class MainListActivity extends AppCompatActivity {
 
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
-    // id값 인텐트!
-    Intent intent = getIntent();
-    String userID = intent.getStringExtra("userID");
 
 
     private ActivityMainlistBinding binding;
@@ -71,6 +68,10 @@ public class MainListActivity extends AppCompatActivity {
 
 //        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
+
+//      인텐트!
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
 
 //        어댑터 연결
         binding.listView.setAdapter(adapter);
