@@ -10,14 +10,12 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //3. BaseAdapter를 상속받아 Adapter구현
 public class ListViewAdapter extends BaseAdapter implements Filterable {
@@ -95,13 +93,13 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
         priceTextView.setText(mlistViewItem.getPrice() + "");
 
-        LinearLayout cmdArea = convertView.findViewById(R.id.cmdArea);
-        cmdArea.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), filteredItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        LinearLayout cmdArea = convertView.findViewById(R.id.cmdArea);
+//        cmdArea.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Toast.makeText(view.getContext(), filteredItemList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return convertView;
     }

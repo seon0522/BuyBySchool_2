@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
@@ -141,19 +142,21 @@ public class MainListActivity extends AppCompatActivity {
         });
         queue.add(jsonObjectRequest);
 
-
         binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
 
-                Log.i("포지션값",""+position);
-                Log.i("포지션값",""+adapter.getItemId(position));
-                Log.i("포지션값",""+ parent.getAdapter().getItem(position));
+                ListViewItem postItem = (ListViewItem) adapter.getItem(position);
 
+//                Log.i("현재 값","hello "+postItem.getTitle());
+//                Log.i("현재 값","hello "+postItem.getContent());
+//                Log.i("현재 값","hello "+postItem.getPrice());
 
-
-//                Intent intent = new Intent(MainListActivity.this, post.class);
-//                startActivity(intent);
+                Intent intent = new Intent(MainListActivity.this, post.class);
+                intent.putExtra("Title",postItem.getTitle());
+                intent.putExtra("Content",postItem.getContent());
+                intent.putExtra("Price",postItem.getPrice());
+                startActivity(intent);
             }
         });
 
