@@ -23,6 +23,8 @@ public class Upload extends AppCompatActivity {
 
     private ActivityUploadBinding binding;
 
+    String USERID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,10 @@ public class Upload extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+//        main에서 넘어온 유저값 request요청 할 때 넘겨주기
+        Intent intent = getIntent();
+        USERID = intent.getStringExtra("USERID");
 
         binding.cancelUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -37,6 +37,8 @@ public class MainListActivity extends AppCompatActivity {
 
     private ActivityMainlistBinding binding;
 
+    String userID;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,26 +49,13 @@ public class MainListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-//      ******************대영 코드 ********************
-
-        // 등록버튼을 클릭 시 수행
-        binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("asdasdsdasd");
-                Intent intent = new Intent(MainListActivity.this, Upload.class);
-                startActivity(intent);
-            }
-        });
-
-//      ******************대영 코드 ********************
 
 //        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
 
 //      인텐트!
         Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
+        userID = intent.getStringExtra("userID");
 
 //        어댑터 연결
         binding.listView.setAdapter(adapter);
@@ -140,6 +129,20 @@ public class MainListActivity extends AppCompatActivity {
             }
         });
         queue.add(jsonObjectRequest);
+
+
+        // 등록버튼을 클릭 시 수행
+        binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("asdasdsdasd");
+                Intent intent = new Intent(MainListActivity.this, Upload.class);
+                intent.putExtra("USERID",userID);
+
+                Log.i("등록버튼", userID);
+                startActivity(intent);
+            }
+        });
 
         binding.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
