@@ -42,10 +42,8 @@ public class Update extends AppCompatActivity {
         Log.i("Update", Title);
         Log.i("Update", Content);
         Log.i("Update", "" + Price);
+//        post에서 값 넘기기
 
-        binding.bookText.setHint(Title);
-        binding.authorText.setHint(Content);
-        binding.priceText.setHint("" + Price);
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 
