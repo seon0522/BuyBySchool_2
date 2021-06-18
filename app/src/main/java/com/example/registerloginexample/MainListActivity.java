@@ -29,11 +29,9 @@ import java.util.ArrayList;
 
 public class MainListActivity extends AppCompatActivity {
 
-
     private ListViewAdapter adapter;
 
     private ArrayList<ListViewItem> list = new ArrayList<>();
-
 
     private String address = "http://meanzoo.dothome.co.kr/List.php";
 
