@@ -154,12 +154,14 @@ public class MainListActivity extends AppCompatActivity {
                 Log.i("현재 값","hello "+postItem.getContent());
                 Log.i("현재 값","hello "+postItem.getPrice());
                 Log.i("현재 값","hello "+postItem.getPostNum());
+                Log.i("등록버튼", userID);
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
                 intent.putExtra("Content",postItem.getContent());
                 intent.putExtra("Price",postItem.getPrice());
                 intent.putExtra("POSTNUM",postItem.getPostNum());
+                intent.putExtra("USERID",userID);
                 startActivity(intent);
             }
         });

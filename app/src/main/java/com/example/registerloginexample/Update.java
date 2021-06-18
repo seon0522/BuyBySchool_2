@@ -26,6 +26,7 @@ public class Update extends AppCompatActivity {
     String Content;  //저자
     int Price;  //가격
     int PostNum;  //게시글 고유 번호
+    String USERID;
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -40,12 +41,14 @@ public class Update extends AppCompatActivity {
         Content = intent.getStringExtra("Content");
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM", -1);
+        USERID = intent.getStringExtra("USERID");  //post에서 받아온 사용자 값
 
         //        post에서 넘어온 값
         Log.i("Update", Title);  //제목
         Log.i("Update", Content);  //저자
         Log.i("Update", "가격 " + Price);  //가격
         Log.i("Update", "포스트 " + PostNum);  //고유 게시글 번호
+        Log.i("Update", "사용자아이디 " + USERID);
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 
@@ -76,6 +79,8 @@ public class Update extends AppCompatActivity {
 
                     }
                 };
+
+                //요청할 때 USERID도 같이 넘겨줘!!!!
 
                 UpdateRequest updateRequest = new UpdateRequest(bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Update.this);

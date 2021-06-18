@@ -22,6 +22,7 @@ public class post extends AppCompatActivity {
     String Content;  //저자
     int Price;  //가격
     int PostNum; //게시글 고유 번호
+    String USERID;  //현재 로그인 한 사용자의 아이디
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class post extends AppCompatActivity {
         Content = intent.getStringExtra("Content");
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM",-1);
+        USERID = intent.getStringExtra("USERID");
 
         Log.i("postAct","가격" + Price);
         Log.i("postAct","포스트 " + PostNum);
@@ -56,6 +58,7 @@ public class post extends AppCompatActivity {
                 intent.putExtra("Content", Content);
                 intent.putExtra("Price", Price);
                 intent.putExtra("POSTNUM",PostNum);
+                intent.putExtra("USERID",USERID);
                 startActivity(intent);
             }
         });
