@@ -22,10 +22,10 @@ import org.json.JSONObject;
 public class Update extends AppCompatActivity {
     private ActivityUpdateBinding binding;
 
-    String Title;
-    String Content;
-    int Price;
-    int PostNum;
+    String Title;  //제목
+    String Content;  //저자
+    int Price;  //가격
+    int PostNum;  //게시글 고유 번호
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -42,10 +42,10 @@ public class Update extends AppCompatActivity {
         PostNum = intent.getIntExtra("POSTNUM", -1);
 
         //        post에서 넘어온 값
-        Log.i("Update", Title);
-        Log.i("Update", Content);
-        Log.i("Update", "가격 " + Price);
-        Log.i("Update", "포스트 " + PostNum);
+        Log.i("Update", Title);  //제목
+        Log.i("Update", Content);  //저자
+        Log.i("Update", "가격 " + Price);  //가격
+        Log.i("Update", "포스트 " + PostNum);  //고유 게시글 번호
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 

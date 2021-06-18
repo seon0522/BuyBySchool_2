@@ -18,11 +18,10 @@ public class post extends AppCompatActivity {
     //    private ActivityMainlistBinding binding;
     private ActivityPostBinding binding;
 
-    String Title;
-    String Content;
-    int Price;
-    int PostNum;
-
+    String Title;  //제목
+    String Content;  //저자
+    int Price;  //가격
+    int PostNum; //게시글 고유 번호
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
