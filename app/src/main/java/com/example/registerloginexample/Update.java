@@ -44,11 +44,16 @@ public class Update extends AppCompatActivity {
         USERID = intent.getStringExtra("USERID");  //post에서 받아온 사용자 값
 
         //        post에서 넘어온 값
-        Log.i("Update", Title);  //제목
-        Log.i("Update", Content);  //저자
-        Log.i("Update", "가격 " + Price);  //가격
-        Log.i("Update", "포스트 " + PostNum);  //고유 게시글 번호
-        Log.i("Update", "사용자아이디 " + USERID);
+//        Log.i("Update", Title);  //제목
+//        Log.i("Update", Content);  //저자
+//        Log.i("Update", "가격 " + Price);  //가격
+//        Log.i("Update", "포스트 " + PostNum);  //고유 게시글 번호
+//        Log.i("Update", "사용자아이디 " + USERID);
+
+        binding.bookText.setText(Title);
+        binding.priceText.setText(String.valueOf(Price));
+        binding.authorText.setText(Content);
+
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 
@@ -66,7 +71,7 @@ public class Update extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject jsonObject = new JSONObject(response);
-                            System.out.println("jsnobject입니다 잠이 오며 배가 고픕니다.." + jsonObject);
+                            System.out.println("jsonbject ==============================" + jsonObject);
                             boolean success = jsonObject.getBoolean("success");
                             System.out.println("게시물 업데이트" + response);
                             Toast.makeText(getApplicationContext(), "게시물을 수정합니다", Toast.LENGTH_SHORT).show();
@@ -80,9 +85,8 @@ public class Update extends AppCompatActivity {
                     }
                 };
 
-                //요청할 때 USERID도 같이 넘겨줘!!!!
 
-                UpdateRequest updateRequest = new UpdateRequest(bookName, authorName, detailMemo, priceSetting, responseListener);
+                UpdateRequest updateRequest = new UpdateRequest(USERID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Update.this);
                 queue.add(updateRequest);
 
@@ -92,7 +96,34 @@ public class Update extends AppCompatActivity {
         binding.deleteUpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "게시물을 삭제하였습니다", Toast.LENGTH_SHORT).show();
+                String bookName = binding.bookText.getText().toString();
+                String authorName = binding.authorText.getText().toString();
+                int priceSetting = Integer.parseInt(binding.priceText.getText().toString());
+                String detailMemo = binding.memo.getText().toString();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            Toast.makeText(getApplicationContext(), "게시물을 삭제합니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            startActivity(intent);
+
+                        }catch (JSONException e ){
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                };
+
+                UpdateRequest updateRequest = new UpdateRequest(USERID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(Update.this);
+                queue.add(updateRequest);
+
             }
         });
 

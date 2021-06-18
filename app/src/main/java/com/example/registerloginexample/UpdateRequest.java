@@ -14,10 +14,12 @@ public class UpdateRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public UpdateRequest(String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
+    public UpdateRequest(String USERID ,int PostNum, String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
+        map.put("USERID",USERID);
+        map.put("PostNum", PostNum + "");
         map.put("bookName",bookName);
         map.put("authorName", authorName);
         map.put("detailMemo",detailMemo);

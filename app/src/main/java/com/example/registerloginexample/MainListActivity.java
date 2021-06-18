@@ -139,7 +139,7 @@ public class MainListActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainListActivity.this, Upload.class);
                 intent.putExtra("USERID",userID);
 
-                Log.i("등록버튼", userID);
+//                Log.i("등록버튼", userID);
                 startActivity(intent);
             }
         });
@@ -150,11 +150,11 @@ public class MainListActivity extends AppCompatActivity {
 
                 ListViewItem postItem = (ListViewItem) adapter.getItem(position);
 
-                Log.i("현재 값","hello "+postItem.getTitle());
-                Log.i("현재 값","hello "+postItem.getContent());
-                Log.i("현재 값","hello "+postItem.getPrice());
-                Log.i("현재 값","hello "+postItem.getPostNum());
-                Log.i("등록버튼", userID);
+//                Log.i("현재 값","hello "+postItem.getTitle());
+//                Log.i("현재 값","hello "+postItem.getContent());
+//                Log.i("현재 값","hello "+postItem.getPrice());
+//                Log.i("현재 값","hello "+postItem.getPostNum());
+//                Log.i("등록버튼", userID);
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
