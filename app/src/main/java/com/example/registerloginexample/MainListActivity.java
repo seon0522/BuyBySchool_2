@@ -121,9 +121,12 @@ public class MainListActivity extends AppCompatActivity {
                                 String title = jsonData.getJSONObject(i).getString("TITLE");
                                 int price = jsonData.getJSONObject(i).getInt("PRICE");
                                 String writer = jsonData.getJSONObject(i).getString("WRITER");
-//                                int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
+                                int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
 
-                                adapter.addItem(title, R.drawable.splash2222, price, writer);
+                                Log.i("data", PostNum + "");
+                                Log.i("data", title);
+
+                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer);
                             }
 
                         } catch (JSONException e) {
@@ -149,13 +152,13 @@ public class MainListActivity extends AppCompatActivity {
                 Log.i("현재 값","hello "+postItem.getTitle());
                 Log.i("현재 값","hello "+postItem.getContent());
                 Log.i("현재 값","hello "+postItem.getPrice());
-//                Log.i("현재 값","hello "+postItem.getPostNum());
+                Log.i("현재 값","hello "+postItem.getPostNum());
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
                 intent.putExtra("Content",postItem.getContent());
                 intent.putExtra("Price",postItem.getPrice());
-//                intent.putExtra("POSTNUM",postItem.getPostNum());
+                intent.putExtra("POSTNUM",postItem.getPostNum());
                 startActivity(intent);
             }
         });

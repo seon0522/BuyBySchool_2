@@ -75,8 +75,8 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         contentTextView = (TextView) convertView.findViewById(R.id.text);
         priceTextView = (TextView) convertView.findViewById(R.id.price);
 
-//        ListViewItem mlistViewItem = listViewItemList.get(position);
-        ListViewItem mlistViewItem = filteredItemList.get(position);
+//        ListViewItem mlistViewItem = listViewItemList.get(post);
+        ListViewItem mlistViewItem = filteredItemList.get(post);
 
         Log.i("뭐냐", "왜이래");
         iconImageView.setImageResource(mlistViewItem.getIcon());
@@ -101,16 +101,16 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
     // mainactivity 에서 받은 값을 넣음 listvieItemlist 객체로
-    public void addItem(/*int Postnum,*/String title, int icon, int price, String content) {
+    public void addItem(int Postnum ,String title, int icon, int price, String content) {
         ListViewItem item = new ListViewItem();
 
         Log.i("check", price + content);
-
         Log.i("addItem", title);
+        Log.i("addItem", Postnum + "");
         Log.i("addItem", price + "");
         Log.i("addItem", content);
 
-//        item.setPostNum(Postnum);
+        item.setPostNum(Postnum);
         item.setTitle(title);
         item.setContent(content); // price
         item.setIcon(icon);

@@ -25,6 +25,7 @@ public class Update extends AppCompatActivity {
     String Title;
     String Content;
     int Price;
+    int PostNum;
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -38,12 +39,13 @@ public class Update extends AppCompatActivity {
         Title = intent.getStringExtra("Title");
         Content = intent.getStringExtra("Content");
         Price = intent.getIntExtra("Price", -1);
+        PostNum = intent.getIntExtra("POSTNUM", -1);
 
+        //        post에서 넘어온 값
         Log.i("Update", Title);
         Log.i("Update", Content);
-        Log.i("Update", "" + Price);
-//        post에서 값 넘기기
-
+        Log.i("Update", "가격 " + Price);
+        Log.i("Update", "포스트 " + PostNum);
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 

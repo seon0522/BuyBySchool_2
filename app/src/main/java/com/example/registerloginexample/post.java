@@ -38,10 +38,10 @@ public class post extends AppCompatActivity {
         Title = intent.getStringExtra("Title");
         Content = intent.getStringExtra("Content");
         Price = intent.getIntExtra("Price", -1);
-//        PostNum = intent.getIntExtra("POSTNUM",0);
+        PostNum = intent.getIntExtra("POSTNUM",-1);
 
-        Log.i("Price","" + Price);
-//        Log.i("posthello","" + PostNum);
+        Log.i("postAct","가격" + Price);
+        Log.i("postAct","포스트 " + PostNum);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(Content);
@@ -56,6 +56,7 @@ public class post extends AppCompatActivity {
                 intent.putExtra("Title", Title);
                 intent.putExtra("Content", Content);
                 intent.putExtra("Price", Price);
+                intent.putExtra("POSTNUM",PostNum);
                 startActivity(intent);
             }
         });
