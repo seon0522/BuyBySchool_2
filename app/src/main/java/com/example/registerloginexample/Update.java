@@ -27,6 +27,7 @@ public class Update extends AppCompatActivity {
     int Price;  //가격
     int PostNum;  //게시글 고유 번호
     String USERID;
+    String testMemo = "test입니다.";
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -53,6 +54,10 @@ public class Update extends AppCompatActivity {
         binding.bookText.setText(Title);
         binding.priceText.setText(String.valueOf(Price));
         binding.authorText.setText(Content);
+        binding.memo.setText(testMemo);
+
+        System.out.println( "userid ================" + USERID);
+        System.out.println("post =============" + PostNum);
 
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){

@@ -104,11 +104,11 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     public void addItem(int Postnum ,String title, int icon, int price, String content) {
         ListViewItem item = new ListViewItem();
 
-        Log.i("check", price + content);
-        Log.i("addItem", title);
-        Log.i("addItem", Postnum + "");
-        Log.i("addItem", price + "");
-        Log.i("addItem", content);
+//        Log.i("check", price + content);
+//        Log.i("addItem", title);
+//        Log.i("addItem", Postnum + "");
+//        Log.i("addItem", price + "");
+//        Log.i("addItem", content);
 
         item.setPostNum(Postnum);
         item.setTitle(title);

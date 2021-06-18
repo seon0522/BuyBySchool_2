@@ -52,6 +52,9 @@ public class post extends AppCompatActivity {
         binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
+                /*  수정 버튼 클릭전 if 문을 사용하여 USERID를 확인해서 가려야함*/
+
                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Update.class);
                 intent.putExtra("Title", Title);
