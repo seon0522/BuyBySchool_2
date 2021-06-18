@@ -37,7 +37,7 @@ public class post extends AppCompatActivity {
         Intent intent = getIntent();
         Title = intent.getStringExtra("Title");
         Content = intent.getStringExtra("Content");
-        Price = intent.getIntExtra("Price", 0);
+        Price = intent.getIntExtra("Price", -1);
 //        PostNum = intent.getIntExtra("POSTNUM",0);
 
         Log.i("Price","" + Price);
@@ -53,6 +53,9 @@ public class post extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Update.class);
+                intent.putExtra("Title", Title);
+                intent.putExtra("Content", Content);
+                intent.putExtra("Price", Price);
                 startActivity(intent);
             }
         });

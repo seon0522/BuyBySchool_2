@@ -63,7 +63,6 @@ public class MainListActivity extends AppCompatActivity {
 
 //      ******************대영 코드 ********************
 
-
 //        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
 

@@ -158,7 +158,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
-            // update listview by filtered data list.
+            //검색된 리스트의 데이터를 업데이트
             filteredItemList = (ArrayList<ListViewItem>) results.values ;
 
             // notify

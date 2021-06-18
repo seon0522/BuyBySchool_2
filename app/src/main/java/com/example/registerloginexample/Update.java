@@ -1,7 +1,9 @@
 package com.example.registerloginexample;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +22,10 @@ import org.json.JSONObject;
 public class Update extends AppCompatActivity {
     private ActivityUpdateBinding binding;
 
+    String Title;
+    String Content;
+    int Price;
+
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
         binding = ActivityUpdateBinding.inflate(getLayoutInflater());
@@ -27,6 +33,19 @@ public class Update extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        Intent intent = getIntent();
+        Title = intent.getStringExtra("Title");
+        Content = intent.getStringExtra("Content");
+        Price = intent.getIntExtra("Price", -1);
+
+        Log.i("Update", Title);
+        Log.i("Update", Content);
+        Log.i("Update", "" + Price);
+
+        binding.bookText.setHint(Title);
+        binding.authorText.setHint(Content);
+        binding.priceText.setHint("" + Price);
 
         binding.updateBtn.setOnClickListener(new View.OnClickListener(){
 
