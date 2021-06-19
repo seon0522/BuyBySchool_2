@@ -142,7 +142,7 @@
                     android:layout_marginLeft="8dp"
                     android:backgroundTint="#ff8800"
                     android:text="send"
-                    android:id="@+id/btnAdd"/>
+                    android:id="@+id/btnSend"/>
             </LinearLayout>
             <ListView
                 android:layout_width="match_parent"

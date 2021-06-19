@@ -24,8 +24,10 @@ import com.example.registerloginexample.databinding.ActivityPostBinding;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class post extends AppCompatActivity {
 
@@ -38,6 +40,7 @@ public class post extends AppCompatActivity {
     int Price;  //가격
     int PostNum; //게시글 고유 번호
     String USERID;  //현재 로그인 한 사용자의 아이디
+    //    final static private String URL = "http://meanzoo.dothome.co.kr/Post.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +59,9 @@ public class post extends AppCompatActivity {
         list.setAdapter(adapter);
 
         final EditText edtItem = (EditText) findViewById(R.id.edtItem);
-        Button btnAdd = (Button) findViewById(R.id.btnAdd);
+        Button btnSend = (Button) findViewById(R.id.btnSend);
 
-        btnAdd.setOnClickListener(new View.OnClickListener(){
+        btnSend.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -66,7 +69,6 @@ public class post extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
-
 
 
         Intent intent = getIntent();
@@ -77,9 +79,10 @@ public class post extends AppCompatActivity {
         Content = intent.getStringExtra("Content");
         USERID = intent.getStringExtra("USERID");
 
-//        Log.i("postAct","가격" + Price);
-//        Log.i("postAct","포스트 " + PostNum);
-//        Log.i("postAct","writer" + writer);
+        Log.i("postAct","가격" + Price);
+        Log.i("postAct","포스트 " + PostNum);
+        Log.i("postAct","writer" + writer);
+        Log.i("postAct","USERID" + USERID);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);
@@ -91,65 +94,56 @@ public class post extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                Response.Listener<String> responseListener = new Response.Listener<String>() {
-//
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            boolean success = jsonObject.getBoolean("success");
-//                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
-//                            startActivity(intent);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                    }
-//                };
-//
-//                postRequest postRequest = new postRequest(PostNum, USERID, responseListener);
-//                RequestQueue queue = Volley.newRequestQueue(post.this);
-//                queue.add(postRequest);
+                Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
 
-//                RequestQueue queue1 = Volley.newRequestQueue(this);
-//                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
-//                        new Response.Listener<JSONObject>() {
-//                            @Override
-//                            public void onResponse(JSONObject response) {
-//                                try {
-                                        /* String result = reponnse.getString("result"); */
-//                                    JSONArray jsonData = response.getJSONArray("response");
-//                                    for (int i = 0; i < jsonData.length(); i++) {
-//                                        String Content = jsonData.getJSONObject(i).getString("CONTENT");
-//                                    }
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                    }
-//                });
-//                  queue1.add(jsonObjectRequest);
+                    @Override
+                    public void onResponse(JSONObject response) {
 
-//                  if(result == "success") {
-//                Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getApplicationContext(), Update.class);
-//                intent.putExtra("Title", Title);
-//                intent.putExtra("Writer", writer);
-//                intent.putExtra("Price", Price);
-//                intent.putExtra("POSTNUM", PostNum);
-//                intent.putExtra("USERID", USERID);
+                        try {
+                            JSONObject jsonObject = new JSONObject((Map) response);
+                            boolean success = jsonObject.getBoolean("success");
 
-//                startActivity(intent);
-//                  }
-//            }
+                            Log.i("json", "jsonObject=======================================" + success);
+
+                            if (success) {
+                                Toast.makeText(getApplicationContext(), "수정", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), Update.class);
+                                intent.putExtra("Title", Title);
+                                intent.putExtra("Writer", writer);
+                                intent.putExtra("Price", Price);
+                                intent.putExtra("POSTNUM", PostNum);
+                                intent.putExtra("USERID", USERID);
+                                startActivity(intent);
+
+                            } else {
+                                System.out.println("====================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@test");
+                                Toast.makeText(getApplicationContext(), "본인이 작성한 거 아님", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                postRequest postRequest = new postRequest(PostNum, USERID,responseListener);
+//                postRequest.setShouldCache(false);
+
+                RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                queue.add(postRequest);
             }
         });
 
-        binding.backBtn.setOnClickListener(new View.OnClickListener(){
+        binding.btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
