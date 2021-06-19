@@ -26,7 +26,7 @@ public class Update extends AppCompatActivity {
     String Writer;  //저자
     int Price;  //가격
     int PostNum;  //게시글 고유 번호
-    String USERID;
+    String userID;
     String Content;
     String testMemo = "test입니다.";
 
@@ -44,7 +44,7 @@ public class Update extends AppCompatActivity {
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM", -1);
         Content = intent.getStringExtra("Content");
-        USERID = intent.getStringExtra("USERID");  //post에서 받아온 사용자 값
+        userID = intent.getStringExtra("userID");  //post에서 받아온 사용자 값
 
         //        post에서 넘어온 값
 //        Log.i("Update", Title);  //제목
@@ -58,7 +58,7 @@ public class Update extends AppCompatActivity {
         binding.authorText.setText(Writer);
         binding.memo.setText(testMemo);
 
-        System.out.println( "userid ================" + USERID);
+        System.out.println( "userid ================" + userID);
         System.out.println("post =============" + PostNum);
 
 
@@ -83,6 +83,7 @@ public class Update extends AppCompatActivity {
                             System.out.println("게시물 업데이트" + response);
                             Toast.makeText(getApplicationContext(), "게시물을 수정합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            intent.putExtra("userID", userID);
                             startActivity(intent);
 
                         }catch (JSONException e ){
@@ -93,7 +94,7 @@ public class Update extends AppCompatActivity {
                 };
 
 
-                UpdateRequest updateRequest = new UpdateRequest(USERID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
+                UpdateRequest updateRequest = new UpdateRequest(userID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Update.this);
                 queue.add(updateRequest);
 
@@ -117,6 +118,7 @@ public class Update extends AppCompatActivity {
                             boolean success = jsonObject.getBoolean("success");
                             Toast.makeText(getApplicationContext(), "게시물을 삭제합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            intent.putExtra("userID", userID);
                             startActivity(intent);
 
                         }catch (JSONException e ){
@@ -127,7 +129,7 @@ public class Update extends AppCompatActivity {
                     }
                 };
 
-                UpdateRequest updateRequest = new UpdateRequest(USERID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
+                UpdateRequest updateRequest = new UpdateRequest(userID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Update.this);
                 queue.add(updateRequest);
 
