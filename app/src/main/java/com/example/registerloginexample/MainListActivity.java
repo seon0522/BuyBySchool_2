@@ -107,13 +107,17 @@ public class MainListActivity extends AppCompatActivity {
                                 Log.i("data", response.toString());
                                 String title = jsonData.getJSONObject(i).getString("TITLE");
                                 int price = jsonData.getJSONObject(i).getInt("PRICE");
-                                String writer = jsonData.getJSONObject(i).getString("WRITER");
+                                String writer = jsonData.getJSONObject(i).getString("SUBTITLE");
                                 int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
+                                String Content = jsonData.getJSONObject(i).getString("CONTENT");
 
-                                Log.i("data", PostNum + "");
-                                Log.i("data", title);
+                                Log.i("data", "json" + PostNum);
+                                Log.i("data", "json" + title);
+                                Log.i("data", "json" + price);
+                                Log.i("data", "json" + writer);
+                                Log.i("data", "json" + Content);
 
-                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer);
+                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer, Content);
                             }
 
                         } catch (JSONException e) {
@@ -158,7 +162,7 @@ public class MainListActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
                 intent.putExtra("Title",postItem.getTitle());
-                intent.putExtra("Content",postItem.getContent());
+                intent.putExtra("Writer",postItem.getWriter());
                 intent.putExtra("Price",postItem.getPrice());
                 intent.putExtra("POSTNUM",postItem.getPostNum());
                 intent.putExtra("USERID",userID);

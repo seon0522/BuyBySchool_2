@@ -3,18 +3,15 @@ package com.example.registerloginexample;
 //2. listView 표시 할 데이터 객체를 위한 클래스
 public class ListViewItem {
     private int iconDrawavle;
-    private String contentStr;
-    private String titleStr;
-    private int priceInt;
-    private int postNumInt;
+    private String writerStr;  //책의 저자
+    private String titleStr;  //게시글제목
+    private int priceInt;  //가격
+    private int postNumInt;  //게시글 고유 번호
+    private String ContentStr;  //게시글 내용
 
 
     public void setPostNum(int PostNum) {
         this.postNumInt = PostNum;
-    }
-
-    public int getPostNum() {
-        return this.postNumInt;
     }
 
     public void setTitle(String title) {
@@ -25,20 +22,27 @@ public class ListViewItem {
         iconDrawavle = icon;
     }
 
-    public void setContent(String content) {
-        contentStr = content;
+    public void setWriter(String writer) {
+        writerStr = writer;
     }
 
     public void setPrice(int Price) {
         priceInt = Price;
     }
 
+    public void setContent(String content) {ContentStr = content; }
+
+
+    public int getPostNum() {
+        return this.postNumInt;
+    }
+
     public int getIcon() {
         return this.iconDrawavle;
     }
 
-    public String getContent() {
-        return this.contentStr;
+    public String getWriter() {
+        return this.writerStr;
     }
 
     public String getTitle() {
@@ -49,6 +53,6 @@ public class ListViewItem {
         return this.priceInt;
     }
 
-//    public void getPosition(){ return this.position;}
+    public String getContent() { return this.ContentStr; }
 
 }
