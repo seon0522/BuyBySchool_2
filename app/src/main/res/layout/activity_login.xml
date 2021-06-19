@@ -76,9 +76,30 @@
         android:backgroundTint="@color/mainColor"
         android:text="계정이 없으신가요? 지금 회원가입하기!"
         android:textColor="#D9643D"
+        app:layout_constraintEnd_toEndOf="@+id/btnAlert"
+        app:layout_constraintStart_toStartOf="@+id/btnAlert"
+        app:layout_constraintTop_toBottomOf="@+id/btnAlert" />
+
+    <Button
+        android:id="@+id/btnAlert"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#00ff0000"
+        android:backgroundTint="@color/mainColor"
+        android:text="이메일,비밀번호를 잊으셨나요?"
+        android:textColor="#D9643D"
         app:layout_constraintEnd_toEndOf="@+id/et_pass"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_pass"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+    <!--    <Button-->
+<!--        android:id="@+id/btnAlert"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Button"-->
+<!--        android:onClick="OnClickHandler"-->
+<!--        tools:layout_editor_absoluteX="158dp"-->
+<!--        tools:layout_editor_absoluteY="587dp"-->
+<!--        tools:ignore="OnClick" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

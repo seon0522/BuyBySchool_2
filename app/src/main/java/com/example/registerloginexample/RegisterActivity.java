@@ -1,6 +1,7 @@
 package com.example.registerloginexample;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -71,7 +72,10 @@ public class RegisterActivity extends AppCompatActivity {
 //                String userDe = binding.etName.getText().toString();
 
                 if (hakka.equals("학과를 선택하세요!")){
-                    Toast.makeText(getApplicationContext(),"학과를 선택 하고 가입하세요!!.",Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("학과를 선택 하고 가입하세요!!.");
+                    builder.setPositiveButton("확인",null);
+                    builder.create().show();
                     return;
                 }
                 //
@@ -90,6 +94,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                                 Toast.makeText(getApplicationContext(),"회원 등록에 성공하였습니다.",Toast.LENGTH_SHORT).show();
+
+
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
@@ -111,7 +117,11 @@ public class RegisterActivity extends AppCompatActivity {
                     RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                     queue.add(registerRequest);
                 }else{
-                    Toast.makeText(getApplicationContext(),"학교 이메일을 입력 하세요.",Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("학교 이메일을 입력 하세요");
+                    builder.setPositiveButton("확인",null);
+                    builder.create().show();
+
                     System.out.println("학교 이메일을 입력 하세요");
                 }
             }

@@ -1,6 +1,7 @@
 package com.example.registerloginexample;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -38,6 +39,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.btnAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setMessage("가입하신 이메일,비밀번호를 잊으신 분은 \ntest@naver.com 로 문의주세요 !");
+                builder.setPositiveButton("확인",null);
+                builder.create().show();
+            }
+        });
+
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
                 String userID = binding.etId.getText().toString();
                 String userPass = binding.etPass.getText().toString();
-
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -65,12 +75,31 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent = new Intent(LoginActivity.this, MainListActivity.class);
 
 
+
                                 intent.putExtra("userID", userID);
                                 intent.putExtra("userPass", userPass);
                                 startActivity(intent);
                             } else { // 로그인에 실패한 경우
-                                Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-                                return;
+
+                                if(userID.equals("")){
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    builder.setMessage("아이디를 입력하세요!");
+                                    builder.setPositiveButton("확인",null);
+                                    builder.create().show();
+                                    return;
+                                } else if(userPass.equals("")) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    builder.setMessage("비밀번호를 입력하세요!");
+                                    builder.setPositiveButton("확인", null);
+                                    builder.create().show();
+                                    return;
+                                }else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    builder.setMessage("아이디/비밀번호 가 일치하지 않습니다 \n다시 시도해 주세요!");
+                                    builder.setPositiveButton("확인", null);
+                                    builder.create().show();
+                                    return;
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
