@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     String hakka = "";
 
-    private EditText et_id, et_pass, et_nickname;
+    private EditText et_id, et_pass, et_repass,et_nickname;
     private Spinner et_name;
     private Button btn_register,btn_register_back;
 
@@ -46,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         // 아이디 값 찾아주기
         et_id = findViewById(R.id.et_id);
         et_pass = findViewById(R.id.et_pass);
+        et_repass = findViewById(R.id.et_repass);
         et_name = findViewById(R.id.et_name);
         et_nickname = findViewById(R.id.et_nickname);
 
@@ -69,7 +70,22 @@ public class RegisterActivity extends AppCompatActivity {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
                 String userID = binding.etId.getText().toString();
                 String userPass = binding.etPass.getText().toString();
+                String userRePass = binding.etRepass.getText().toString();
+
 //                String userDe = binding.etName.getText().toString();
+
+                if (!(userPass.equals(userRePass))){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("비밀번호가 일치하지 않습니다");
+                    builder.setPositiveButton("확인",null);
+                    builder.create().show();
+                    userPass = "";
+                    userRePass = "";
+                    userPass = binding.etPass.getText().toString();
+                    userRePass = binding.etRepass.getText().toString();
+
+                    return;
+                }
 
                 if (hakka.equals("학과를 선택하세요!")){
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -78,7 +94,15 @@ public class RegisterActivity extends AppCompatActivity {
                     builder.create().show();
                     return;
                 }
-                //
+                if (10<et_nickname.length()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("닉네임을 11자 이내로");
+                    builder.setPositiveButton("확인",null);
+                    builder.create().show();
+                    return;
+                }
+
+
                 String userDe = hakka;
                 String userName = binding.etNickname.getText().toString();
 
@@ -99,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
+
 
                             else { // 회원등록에 실패한 경우
 
