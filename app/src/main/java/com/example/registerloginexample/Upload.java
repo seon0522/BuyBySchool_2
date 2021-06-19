@@ -34,8 +34,6 @@ public class Upload extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-//        main에서 넘어온 유저값 request요청 할 때 넘겨주기
-//        입력값 php쪽으로 넘겨 줄 때, 이 값도 같이 넘겨줘!!!!
         Intent intent = getIntent();
         USERID = intent.getStringExtra("USERID");
 
@@ -89,7 +87,7 @@ public class Upload extends AppCompatActivity {
                     }
                 };
 
-                UploadRequest uploadRequest = new UploadRequest(bookName, authorName, detailMemo, priceSetting, responseListener);
+                UploadRequest uploadRequest = new UploadRequest(USERID ,bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Upload.this);
                 queue.add(uploadRequest);
             }

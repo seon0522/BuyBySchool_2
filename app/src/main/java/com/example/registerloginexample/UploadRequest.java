@@ -14,10 +14,11 @@ public class UploadRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public UploadRequest(String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
+    public UploadRequest(String USERID, String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
+        map.put("USERID", USERID);
         map.put("bookName",bookName);
         map.put("authorName", authorName);
         map.put("detailMemo",detailMemo);
