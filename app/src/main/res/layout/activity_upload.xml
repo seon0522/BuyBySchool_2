@@ -18,7 +18,7 @@
             android:id="@+id/registimg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/img"
+            android:src="@drawable/splash2222"
             android:scaleType="fitXY"/>
     </LinearLayout>
 
