@@ -52,23 +52,23 @@ public class post extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        final ArrayList<String> midList = new ArrayList<String>();
-        ListView list = (ListView) findViewById(R.id.postlist);
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
-        list.setAdapter(adapter);
-
-        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
-        Button btnSend = (Button) findViewById(R.id.btnSend);
-
-        btnSend.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                midList.add(edtItem.getText().toString());
-                adapter.notifyDataSetChanged();
-            }
-        });
+//        final ArrayList<String> midList = new ArrayList<String>();
+//        ListView list = (ListView) findViewById(R.id.postlist);
+//
+//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
+//        list.setAdapter(adapter);
+//
+//        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
+//        Button btnSend = (Button) findViewById(R.id.btnSend);
+//
+//        btnSend.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+//                midList.add(edtItem.getText().toString());
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
 
 
         Intent intent = getIntent();
@@ -79,10 +79,10 @@ public class post extends AppCompatActivity {
         Content = intent.getStringExtra("Content");
         USERID = intent.getStringExtra("USERID");
 
-        Log.i("postAct","가격" + Price);
-        Log.i("postAct","포스트 " + PostNum);
-        Log.i("postAct","writer" + writer);
-        Log.i("postAct","USERID" + USERID);
+//        Log.i("postAct","가격" + Price);
+//        Log.i("postAct","포스트 " + PostNum);
+//        Log.i("postAct","writer" + writer);
+//        Log.i("postAct","USERID" + USERID);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);

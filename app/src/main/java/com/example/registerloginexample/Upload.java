@@ -39,7 +39,6 @@ public class Upload extends AppCompatActivity {
         System.out.println(USERID + "==============================================");
 
 
-
         binding.cancelUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,30 +65,25 @@ public class Upload extends AppCompatActivity {
 
                     @Override
                     public void onResponse(String response) {
-                        try{
-                            System.out.println(response +  "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
+                        try {
+                            System.out.println(response + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
                             JSONObject jsonObject = new JSONObject(response);
                             System.out.println("jsnobject입니다@@@@@@@@@@@@@@@@" + jsonObject);
                             boolean success = jsonObject.getBoolean("success");
-//                            if(success) {
-                                System.out.println("게시물등록" + response);
-                                Toast.makeText(getApplicationContext(), "게시물을 등록합니다", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
-                                startActivity(intent);
-//                            }
-//                            else{
-//                                Toast.makeText(getApplicationContext(),"게시물 등록에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-//                                return;
-//                            }
+                            System.out.println("게시물등록" + response);
+                            Toast.makeText(getApplicationContext(), "게시물을 등록합니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            startActivity(intent);
+//
 
-                        }catch (JSONException e ){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
                     }
                 };
 
-                UploadRequest uploadRequest = new UploadRequest(USERID ,bookName, authorName, detailMemo, priceSetting, responseListener);
+                UploadRequest uploadRequest = new UploadRequest(USERID, bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Upload.this);
                 queue.add(uploadRequest);
             }
