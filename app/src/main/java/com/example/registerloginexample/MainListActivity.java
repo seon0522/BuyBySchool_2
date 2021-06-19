@@ -109,11 +109,15 @@ public class MainListActivity extends AppCompatActivity {
                                 int price = jsonData.getJSONObject(i).getInt("PRICE");
                                 String writer = jsonData.getJSONObject(i).getString("SUBTITLE");
                                 int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
+                                String Content = jsonData.getJSONObject(i).getString("CONTENT");
 
-                                Log.i("data", PostNum + "");
-                                Log.i("data", title);
+                                Log.i("data", "json" + PostNum);
+                                Log.i("data", "json" + title);
+                                Log.i("data", "json" + price);
+                                Log.i("data", "json" + writer);
+                                Log.i("data", "json" + Content);
 
-                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer);
+//                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer);
                             }
 
                         } catch (JSONException e) {
