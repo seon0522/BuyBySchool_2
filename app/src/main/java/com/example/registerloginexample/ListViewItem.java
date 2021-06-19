@@ -3,7 +3,7 @@ package com.example.registerloginexample;
 //2. listView 표시 할 데이터 객체를 위한 클래스
 public class ListViewItem {
     private int iconDrawavle;
-    private String contentStr;
+    private String writerStr;
     private String titleStr;
     private int priceInt;
     private int postNumInt;
@@ -25,8 +25,8 @@ public class ListViewItem {
         iconDrawavle = icon;
     }
 
-    public void setContent(String content) {
-        contentStr = content;
+    public void setWriter(String writer) {
+        writerStr = writer;
     }
 
     public void setPrice(int Price) {
@@ -37,8 +37,8 @@ public class ListViewItem {
         return this.iconDrawavle;
     }
 
-    public String getContent() {
-        return this.contentStr;
+    public String getWriter() {
+        return this.writerStr;
     }
 
     public String getTitle() {
@@ -48,7 +48,5 @@ public class ListViewItem {
     public int getPrice() {
         return this.priceInt;
     }
-
-//    public void getPosition(){ return this.position;}
 
 }

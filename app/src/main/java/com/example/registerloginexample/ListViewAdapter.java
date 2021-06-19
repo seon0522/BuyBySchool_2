@@ -22,7 +22,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     private ImageView iconImageView;
     private TextView titleTextView;
-    private TextView contentTextView;
+    private TextView writerTextView;  //저자
     private TextView priceTextView;
 
     //    데이터를 넣은 리스트 변수(원본데이터)
@@ -72,7 +72,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         }
         titleTextView = (TextView) convertView.findViewById(R.id.title);
         iconImageView = (ImageView) convertView.findViewById(R.id.icon);
-        contentTextView = (TextView) convertView.findViewById(R.id.text);
+        writerTextView = (TextView) convertView.findViewById(R.id.text);
         priceTextView = (TextView) convertView.findViewById(R.id.price);
 
 //        ListViewItem mlistViewItem = listViewItemList.get(post);
@@ -81,7 +81,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         Log.i("뭐냐", "왜이래");
         iconImageView.setImageResource(mlistViewItem.getIcon());
         titleTextView.setText(mlistViewItem.getTitle());
-        contentTextView.setText(mlistViewItem.getContent());
+        writerTextView.setText(mlistViewItem.getWriter());
 
 //        Log.i("뭐냐", mlistViewItem.getTitle());
 //        Log.i("뭐냐", mlistViewItem.getPrice() + "");
@@ -101,7 +101,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
     // mainactivity 에서 받은 값을 넣음 listvieItemlist 객체로
-    public void addItem(int Postnum ,String title, int icon, int price, String content) {
+    public void addItem(int Postnum ,String title, int icon, int price, String writer) {
         ListViewItem item = new ListViewItem();
 
 //        Log.i("check", price + content);
@@ -112,10 +112,9 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
         item.setPostNum(Postnum);
         item.setTitle(title);
-        item.setContent(content); // price
+        item.setWriter(writer);
         item.setIcon(icon);
-        item.setPrice(price); // writer
-        System.out.println("-------gettitle" + item.getTitle() + "------getprice " + item.getPrice() + "-----getcontent " + item.getContent() );
+        item.setPrice(price);
 
         listViewItemList.add(item);
     }
@@ -143,7 +142,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
 
                 for (ListViewItem item : listViewItemList) {
                     if (item.getTitle().toUpperCase().contains(constraint.toString().toUpperCase()) ||
-                            item.getContent().toUpperCase().contains(constraint.toString().toUpperCase()))
+                            item.getWriter().toUpperCase().contains(constraint.toString().toUpperCase()))
                     {
                         itemList.add(item) ;
                     }
