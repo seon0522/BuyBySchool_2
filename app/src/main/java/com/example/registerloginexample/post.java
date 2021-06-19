@@ -18,6 +18,7 @@ public class post extends AppCompatActivity {
 
     String Title;  //제목
     String writer;  //저자
+    String Content;  //저자
     int Price;  //가격
     int PostNum; //게시글 고유 번호
     String USERID;  //현재 로그인 한 사용자의 아이디
@@ -37,6 +38,7 @@ public class post extends AppCompatActivity {
         writer = intent.getStringExtra("Writer");
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM",-1);
+        Content = intent.getStringExtra("Content");
         USERID = intent.getStringExtra("USERID");
 
         Log.i("postAct","가격" + Price);
@@ -53,7 +55,6 @@ public class post extends AppCompatActivity {
             public void onClick(View v) {
 
                 /*  수정 버튼 클릭전 if 문을 사용하여 USERID를 확인해서 가려야함*/
-
                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), Update.class);
                 intent.putExtra("Title", Title);
