@@ -72,7 +72,6 @@ public class post extends AppCompatActivity {
 //                        try {
 //                            JSONObject jsonObject = new JSONObject(response);
 //                            boolean success = jsonObject.getBoolean("success");
-//                            Toast.makeText(getApplicationContext(), "게시물을 등록합니다", Toast.LENGTH_SHORT).show();
 //                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
 //                            startActivity(intent);
 //
@@ -86,12 +85,14 @@ public class post extends AppCompatActivity {
 //                postRequest postRequest = new postRequest(PostNum, USERID, responseListener);
 //                RequestQueue queue = Volley.newRequestQueue(post.this);
 //                queue.add(postRequest);
-//
+
+//                RequestQueue queue1 = Volley.newRequestQueue(this);
 //                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
 //                        new Response.Listener<JSONObject>() {
 //                            @Override
 //                            public void onResponse(JSONObject response) {
 //                                try {
+                                        /* String result = reponnse.getString("result"); */
 //                                    JSONArray jsonData = response.getJSONArray("response");
 //                                    for (int i = 0; i < jsonData.length(); i++) {
 //                                        String Content = jsonData.getJSONObject(i).getString("CONTENT");
@@ -105,7 +106,9 @@ public class post extends AppCompatActivity {
 //                    public void onErrorResponse(VolleyError error) {
 //                    }
 //                });
+//                  queue1.add(jsonObjectRequest);
 
+//                  if(result == "success") {
 //                Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent(getApplicationContext(), Update.class);
 //                intent.putExtra("Title", Title);
@@ -115,6 +118,7 @@ public class post extends AppCompatActivity {
 //                intent.putExtra("USERID", USERID);
 
 //                startActivity(intent);
+//                  }
 //            }
             }
         });
