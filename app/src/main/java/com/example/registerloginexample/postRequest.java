@@ -16,10 +16,10 @@ public class postRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public postRequest(int PostNum, String USERID, Response.Listener<JSONObject> listener) {
+    public postRequest(int PostNum, String USERID, Response.Listener<String> listener) {
         super(Method.POST,
                 URL,
-                null,
+                listener,
                 null);
 
         map = new HashMap<>();

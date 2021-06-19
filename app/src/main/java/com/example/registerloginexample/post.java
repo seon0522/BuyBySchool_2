@@ -94,16 +94,17 @@ public class post extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Response.Listener<JSONObject> responseListener = new Response.Listener<JSONObject>() {
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
 
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(String response) {
 
                         try {
-                            JSONObject jsonObject = new JSONObject((Map) response);
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림" + response);
+                            JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림");
 
-                            Log.i("json", "jsonObject=======================================" + success);
 
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "수정", Toast.LENGTH_SHORT).show();

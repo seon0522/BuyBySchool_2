@@ -67,6 +67,7 @@ public class Upload extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
+                            System.out.println(response +  "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
                             JSONObject jsonObject = new JSONObject(response);
                             System.out.println("jsnobject입니다@@@@@@@@@@@@@@@@" + jsonObject);
                             boolean success = jsonObject.getBoolean("success");
