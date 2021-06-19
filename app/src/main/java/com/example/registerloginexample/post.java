@@ -61,10 +61,10 @@ public class post extends AppCompatActivity {
         binding.contentPost.setText(Content);
 
 
-//        binding.postChangeBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
+        binding.postChangeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
 //                Response.Listener<String> responseListener = new Response.Listener<String>() {
 //
 //                    @Override
@@ -116,18 +116,19 @@ public class post extends AppCompatActivity {
 
 //                startActivity(intent);
 //            }
-//        });
+            }
+        });
 
-//        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+        binding.backBtn.setOnClickListener(new View.OnClickListener(){
 
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "뒤로갑니다", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "뒤로갑니다", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
-
 }
