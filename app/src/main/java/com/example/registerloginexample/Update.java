@@ -27,6 +27,7 @@ public class Update extends AppCompatActivity {
     int Price;  //가격
     int PostNum;  //게시글 고유 번호
     String USERID;
+    String Content;
     String testMemo = "test입니다.";
 
     protected void onCreate(Bundle saveInstanceState){
@@ -42,6 +43,7 @@ public class Update extends AppCompatActivity {
         Writer = intent.getStringExtra("Writer");
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM", -1);
+        Content = intent.getStringExtra("Content");
         USERID = intent.getStringExtra("USERID");  //post에서 받아온 사용자 값
 
         //        post에서 넘어온 값

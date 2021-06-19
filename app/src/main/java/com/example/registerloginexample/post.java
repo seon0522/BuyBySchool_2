@@ -48,7 +48,7 @@ public class post extends AppCompatActivity {
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);
         binding.pricePost.setText(""+Price);
-
+        binding.contencPost.setText(Content);
 
         binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -60,6 +60,7 @@ public class post extends AppCompatActivity {
                 intent.putExtra("Title", Title);
                 intent.putExtra("Writer", writer);
                 intent.putExtra("Price", Price);
+                intent.putExtra("Content", Content);
                 intent.putExtra("POSTNUM",PostNum);
                 intent.putExtra("USERID",USERID);
                 startActivity(intent);
