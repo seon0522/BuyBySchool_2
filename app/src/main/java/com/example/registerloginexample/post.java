@@ -100,12 +100,8 @@ public class post extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            System.out.println("@@@@@@@@@@@@@@@@post@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림" + response);
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            System.out.println("@@@@@@@@@@@@@@@@@@@@post@@@@@@@@@@@@@@@@@@@@@@@@@@불림");
-
-
                             if (success) {
                                 Toast.makeText(getApplicationContext(), "수정", Toast.LENGTH_SHORT).show();
                                 Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
@@ -119,8 +115,7 @@ public class post extends AppCompatActivity {
                                 startActivity(intent);
 
                             } else {
-                                System.out.println("====================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@test");
-                                Toast.makeText(getApplicationContext(), "본인이 작성한 거 아님", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "본인의 게시물이 아닙니다.", Toast.LENGTH_SHORT).show();
                                 return;
                             }
                         } catch (JSONException e) {
