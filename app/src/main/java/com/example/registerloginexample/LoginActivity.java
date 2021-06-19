@@ -81,12 +81,11 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                             } else { // 로그인에 실패한 경우
 
-                                if(userID.equals("")){
+                                if(userID.equals("")&&userPass.equals("")){
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                     builder.setMessage("아이디를 입력하세요!");
                                     builder.setPositiveButton("확인",null);
                                     builder.create().show();
-                                    return;
                                 } else if(userPass.equals("")) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                     builder.setMessage("비밀번호를 입력하세요!");
