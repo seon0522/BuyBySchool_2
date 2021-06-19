@@ -36,6 +36,7 @@ public class Upload extends AppCompatActivity {
 
         Intent intent = getIntent();
         USERID = intent.getStringExtra("USERID");
+        System.out.println(USERID + "==============================================");
 
 
 
