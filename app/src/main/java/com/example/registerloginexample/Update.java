@@ -56,7 +56,7 @@ public class Update extends AppCompatActivity {
         binding.bookText.setText(Title);
         binding.priceText.setText(String.valueOf(Price));
         binding.authorText.setText(Writer);
-        binding.memo.setText(testMemo);
+        binding.memo.setText(Content);
 
         System.out.println( "userid ================" + userID);
         System.out.println("post =============" + PostNum);

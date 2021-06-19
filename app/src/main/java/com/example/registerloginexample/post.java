@@ -80,9 +80,9 @@ public class post extends AppCompatActivity {
         userID = intent.getStringExtra("userID");
 
 //        Log.i("postAct","가격" + Price);
-//        Log.i("postAct","포스트 " + PostNum);
 //        Log.i("postAct","writer" + writer);
-//        Log.i("postAct","USERID" + USERID);
+        Log.i("postAct","포스트 " + PostNum);
+        Log.i("postAct","포스트 " + userID);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);
@@ -113,6 +113,7 @@ public class post extends AppCompatActivity {
                                 intent.putExtra("Title", Title);
                                 intent.putExtra("Writer", writer);
                                 intent.putExtra("Price", Price);
+                                intent.putExtra("Content", Content);
                                 intent.putExtra("POSTNUM", PostNum);
                                 intent.putExtra("userID", userID);
                                 startActivity(intent);
@@ -128,7 +129,7 @@ public class post extends AppCompatActivity {
                     }
                 };
 
-                postRequest postRequest = new postRequest(PostNum, userID,responseListener);
+                postRequest postRequest = new postRequest(PostNum, userID ,responseListener);
 //                postRequest.setShouldCache(false);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
