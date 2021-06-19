@@ -7,16 +7,16 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateRequest extends StringRequest {
+public class UpdateDeleteRequest extends StringRequest {
 
-    final static private String URL = "http://meanzoo.dothome.co.kr/testUpdate.php";
+    final static private String URL = "http://meanzoo.dothome.co.kr/testDelete.php";
     // 여기 고침
     private Map<String, String> map;
 
 
 
 
-    public UpdateRequest(String userID, int PostNum, String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
+    public UpdateDeleteRequest(String userID, int PostNum, String bookName, String authorName, String detailMemo, int priceSetting, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();

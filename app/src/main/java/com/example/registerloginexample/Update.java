@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -28,7 +29,7 @@ public class Update extends AppCompatActivity {
     int PostNum;  //게시글 고유 번호
     String userID;
     String Content;
-    String testMemo = "test입니다.";
+
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
@@ -56,7 +57,7 @@ public class Update extends AppCompatActivity {
         binding.bookText.setText(Title);
         binding.priceText.setText(String.valueOf(Price));
         binding.authorText.setText(Writer);
-        binding.memo.setText(testMemo);
+        binding.memo.setText(Content);
 
         System.out.println( "userid ================" + userID);
         System.out.println("post =============" + PostNum);
@@ -77,16 +78,13 @@ public class Update extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            JSONObject jsonObject = new JSONObject(response);
-                            System.out.println("jsonbject ==============================" + jsonObject);
-                            boolean success = jsonObject.getBoolean("success");
                             System.out.println("게시물 업데이트" + response);
                             Toast.makeText(getApplicationContext(), "게시물을 수정합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
                             intent.putExtra("userID", userID);
                             startActivity(intent);
 
-                        }catch (JSONException e ){
+                        }catch (Exception e ){
                             e.printStackTrace();
                         }
 
@@ -114,14 +112,12 @@ public class Update extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try{
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
                             Toast.makeText(getApplicationContext(), "게시물을 삭제합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
                             intent.putExtra("userID", userID);
                             startActivity(intent);
 
-                        }catch (JSONException e ){
+                        }catch (Exception e ){
                             e.printStackTrace();
                         }
 
@@ -129,9 +125,9 @@ public class Update extends AppCompatActivity {
                     }
                 };
 
-                UpdateRequest updateRequest = new UpdateRequest(userID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
+                UpdateDeleteRequest updateDeleteRequest = new UpdateDeleteRequest(userID, PostNum ,bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Update.this);
-                queue.add(updateRequest);
+                queue.add(updateDeleteRequest);
 
             }
         });
