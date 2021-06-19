@@ -9,7 +9,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.registerloginexample.databinding.ActivityPostBinding;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class post extends AppCompatActivity {
 
@@ -37,36 +47,76 @@ public class post extends AppCompatActivity {
         Title = intent.getStringExtra("Title");
         writer = intent.getStringExtra("Writer");
         Price = intent.getIntExtra("Price", -1);
-        PostNum = intent.getIntExtra("POSTNUM",-1);
+        PostNum = intent.getIntExtra("POSTNUM", -1);
         Content = intent.getStringExtra("Content");
         USERID = intent.getStringExtra("USERID");
 
-        Log.i("postAct","가격" + Price);
-        Log.i("postAct","포스트 " + PostNum);
-        Log.i("postAct","writer" + writer);
+//        Log.i("postAct","가격" + Price);
+//        Log.i("postAct","포스트 " + PostNum);
+//        Log.i("postAct","writer" + writer);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);
-        binding.pricePost.setText(""+Price);
+        binding.pricePost.setText("" + Price);
 
 
-        binding.postChangeBtn.setOnClickListener(new View.OnClickListener(){
+        binding.postChangeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                /*  수정 버튼 클릭전 if 문을 사용하여 USERID를 확인해서 가려야함*/
-                Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), Update.class);
-                intent.putExtra("Title", Title);
-                intent.putExtra("Writer", writer);
-                intent.putExtra("Price", Price);
-                intent.putExtra("POSTNUM",PostNum);
-                intent.putExtra("USERID",USERID);
-                startActivity(intent);
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            Toast.makeText(getApplicationContext(), "게시물을 등록합니다", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            startActivity(intent);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                postRequest postRequest = new postRequest(PostNum, USERID, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(post.this);
+                queue.add(postRequest);
+
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, address, null,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                try {
+                                    JSONArray jsonData = response.getJSONArray("response");
+                                    for (int i = 0; i < jsonData.length(); i++) {
+                                        String Content = jsonData.getJSONObject(i).getString("CONTENT");
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                });
+
+//                Toast.makeText(getApplicationContext(), "포스트를 수정합니다", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getApplicationContext(), Update.class);
+//                intent.putExtra("Title", Title);
+//                intent.putExtra("Writer", writer);
+//                intent.putExtra("Price", Price);
+//                intent.putExtra("POSTNUM", PostNum);
+//                intent.putExtra("USERID", USERID);
+//                startActivity(intent);
             }
         });
 
-        binding.backBtn.setOnClickListener(new View.OnClickListener(){
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
