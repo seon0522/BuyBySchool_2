@@ -101,7 +101,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         return convertView;
     }
     // mainactivity 에서 받은 값을 넣음 listvieItemlist 객체로
-    public void addItem(int Postnum ,String title, int icon, int price, String writer) {
+    public void addItem(int Postnum ,String title, int icon, int price, String writer, String Content) {
         ListViewItem item = new ListViewItem();
 
 //        Log.i("check", price + content);
@@ -115,6 +115,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         item.setWriter(writer);
         item.setIcon(icon);
         item.setPrice(price);
+        item.setContent(Content);
 
         listViewItemList.add(item);
     }

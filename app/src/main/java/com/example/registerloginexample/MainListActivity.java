@@ -117,7 +117,7 @@ public class MainListActivity extends AppCompatActivity {
                                 Log.i("data", "json" + writer);
                                 Log.i("data", "json" + Content);
 
-//                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer);
+                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer, Content);
                             }
 
                         } catch (JSONException e) {
