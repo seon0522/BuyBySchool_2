@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -20,6 +24,8 @@ import com.example.registerloginexample.databinding.ActivityPostBinding;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class post extends AppCompatActivity {
 
@@ -42,6 +48,26 @@ public class post extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        final ArrayList<String> midList = new ArrayList<String>();
+        ListView list = (ListView) findViewById(R.id.postlist);
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
+        list.setAdapter(adapter);
+
+        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
+        Button btnAdd = (Button) findViewById(R.id.btnAdd);
+
+        btnAdd.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                midList.add(edtItem.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
 
         Intent intent = getIntent();
         Title = intent.getStringExtra("Title");
@@ -81,7 +107,7 @@ public class post extends AppCompatActivity {
 //
 //                    }
 //                };
-
+//
 //                postRequest postRequest = new postRequest(PostNum, USERID, responseListener);
 //                RequestQueue queue = Volley.newRequestQueue(post.this);
 //                queue.add(postRequest);
