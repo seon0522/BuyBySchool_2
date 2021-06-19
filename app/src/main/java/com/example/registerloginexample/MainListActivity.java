@@ -38,6 +38,7 @@ public class MainListActivity extends AppCompatActivity {
     private ActivityMainlistBinding binding;
 
     String userID;
+    String USERID;
 
     @Override
 
@@ -49,13 +50,16 @@ public class MainListActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-
 //        리스트에 연동될 어탭더
         adapter = new ListViewAdapter();
+
 
 //      인텐트!
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
+        USERID = userID;
+        System.out.println("mainlistActivity 의 userID   ==============================  :: " + userID);
+
 
 //        어댑터 연결
         binding.listView.setAdapter(adapter);
@@ -88,7 +92,7 @@ public class MainListActivity extends AppCompatActivity {
 //                }catch (RuntimeException e){
 //                    e.getMessage();
 //                }
-                ((ListViewAdapter)binding.listView.getAdapter()).getFilter().filter(filterText);
+                ((ListViewAdapter) binding.listView.getAdapter()).getFilter().filter(filterText);
             }
         });
 
@@ -111,13 +115,13 @@ public class MainListActivity extends AppCompatActivity {
                                 int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
                                 String Content = jsonData.getJSONObject(i).getString("CONTENT");
 
-                                Log.i("data", "json" + PostNum);
-                                Log.i("data", "json" + title);
-                                Log.i("data", "json" + price);
-                                Log.i("data", "json" + writer);
-                                Log.i("data", "json" + Content);
+//                                Log.i("data", "json" + PostNum);
+//                                Log.i("data", "json" + title);
+//                                Log.i("data", "json" + price);
+//                                Log.i("data", "json" + writer);
+//                                Log.i("data", "json" + Content);
 
-                                adapter.addItem(PostNum,title, R.drawable.splash2222, price, writer, Content);
+                                adapter.addItem(PostNum, title, R.drawable.splash2222, price, writer, Content);
                             }
 
                         } catch (JSONException e) {
@@ -139,10 +143,9 @@ public class MainListActivity extends AppCompatActivity {
         binding.uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("asdasdsdasd");
+                System.out.println("=================등록버튼이 글릭 되었고 화면이 전환됩니다=================");
                 Intent intent = new Intent(MainListActivity.this, Upload.class);
-                intent.putExtra("USERID",userID);
-
+                intent.putExtra("userID", userID);
 //                Log.i("등록버튼", userID);
                 startActivity(intent);
             }
@@ -161,12 +164,12 @@ public class MainListActivity extends AppCompatActivity {
 //                Log.i("등록버튼", userID);
 
                 Intent intent = new Intent(MainListActivity.this, post.class);
-                intent.putExtra("Title",postItem.getTitle());
-                intent.putExtra("Writer",postItem.getWriter());
-                intent.putExtra("Price",postItem.getPrice());
-                intent.putExtra("POSTNUM",postItem.getPostNum());
-                intent.putExtra("Content",postItem.getContent());
-                intent.putExtra("USERID",userID);
+                intent.putExtra("Title", postItem.getTitle());
+                intent.putExtra("Writer", postItem.getWriter());
+                intent.putExtra("Price", postItem.getPrice());
+                intent.putExtra("POSTNUM", postItem.getPostNum());
+                intent.putExtra("Content", postItem.getContent());
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });

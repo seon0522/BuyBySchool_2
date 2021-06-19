@@ -23,7 +23,7 @@ public class Upload extends AppCompatActivity {
 
     private ActivityUploadBinding binding;
 
-    String USERID;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +35,14 @@ public class Upload extends AppCompatActivity {
         actionBar.hide();
 
         Intent intent = getIntent();
-        USERID = intent.getStringExtra("USERID");
-        System.out.println(USERID + "==============================================");
-
+        userID = intent.getStringExtra("userID");
 
         binding.cancelUploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "등록을 취소합니다", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
@@ -66,15 +65,12 @@ public class Upload extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            System.out.println(response + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$4");
                             JSONObject jsonObject = new JSONObject(response);
-                            System.out.println("jsnobject입니다@@@@@@@@@@@@@@@@" + jsonObject);
                             boolean success = jsonObject.getBoolean("success");
-                            System.out.println("게시물등록" + response);
                             Toast.makeText(getApplicationContext(), "게시물을 등록합니다", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                            intent.putExtra("userID", userID);
                             startActivity(intent);
-//
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -83,7 +79,7 @@ public class Upload extends AppCompatActivity {
                     }
                 };
 
-                UploadRequest uploadRequest = new UploadRequest(USERID, bookName, authorName, detailMemo, priceSetting, responseListener);
+                UploadRequest uploadRequest = new UploadRequest(userID, bookName, authorName, detailMemo, priceSetting, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(Upload.this);
                 queue.add(uploadRequest);
             }

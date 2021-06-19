@@ -39,7 +39,7 @@ public class post extends AppCompatActivity {
     String Content;  //소개글
     int Price;  //가격
     int PostNum; //게시글 고유 번호
-    String USERID;  //현재 로그인 한 사용자의 아이디
+    String userID;  //현재 로그인 한 사용자의 아이디
     //    final static private String URL = "http://meanzoo.dothome.co.kr/Post.php";
 
     @Override
@@ -77,7 +77,7 @@ public class post extends AppCompatActivity {
         Price = intent.getIntExtra("Price", -1);
         PostNum = intent.getIntExtra("POSTNUM", -1);
         Content = intent.getStringExtra("Content");
-        USERID = intent.getStringExtra("USERID");
+        userID = intent.getStringExtra("userID");
 
 //        Log.i("postAct","가격" + Price);
 //        Log.i("postAct","포스트 " + PostNum);
@@ -100,10 +100,10 @@ public class post extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림" + response);
+                            System.out.println("@@@@@@@@@@@@@@@@post@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림" + response);
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@불림");
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@post@@@@@@@@@@@@@@@@@@@@@@@@@@불림");
 
 
                             if (success) {
@@ -114,7 +114,7 @@ public class post extends AppCompatActivity {
                                 intent.putExtra("Writer", writer);
                                 intent.putExtra("Price", Price);
                                 intent.putExtra("POSTNUM", PostNum);
-                                intent.putExtra("USERID", USERID);
+                                intent.putExtra("userID", userID);
                                 startActivity(intent);
 
                             } else {
@@ -128,7 +128,7 @@ public class post extends AppCompatActivity {
                     }
                 };
 
-                postRequest postRequest = new postRequest(PostNum, USERID,responseListener);
+                postRequest postRequest = new postRequest(PostNum, userID,responseListener);
 //                postRequest.setShouldCache(false);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -150,6 +150,7 @@ public class post extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "뒤로갑니다", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
             }
         });

@@ -16,7 +16,7 @@ public class postRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public postRequest(int PostNum, String USERID, Response.Listener<String> listener) {
+    public postRequest(int PostNum, String userID, Response.Listener<String> listener) {
         super(Method.POST,
                 URL,
                 listener,
@@ -24,7 +24,7 @@ public class postRequest extends StringRequest {
 
         map = new HashMap<>();
         map.put("PostNum",PostNum + "");
-        map.put("USERID", USERID);
+        map.put("userID", userID);
 
     }
 
