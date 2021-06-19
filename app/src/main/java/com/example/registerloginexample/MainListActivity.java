@@ -165,6 +165,7 @@ public class MainListActivity extends AppCompatActivity {
                 intent.putExtra("Writer",postItem.getWriter());
                 intent.putExtra("Price",postItem.getPrice());
                 intent.putExtra("POSTNUM",postItem.getPostNum());
+                intent.putExtra("Content",postItem.getContent());
                 intent.putExtra("USERID",userID);
                 startActivity(intent);
             }
