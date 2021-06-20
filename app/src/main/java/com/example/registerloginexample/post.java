@@ -149,6 +149,7 @@ public class post extends AppCompatActivity {
                 midList.add(edtItem.getText().toString());
                 adapter.notifyDataSetChanged();
                 String text = edtItem.getText().toString();
+                String post = "insert";
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
 
@@ -186,7 +187,7 @@ public class post extends AppCompatActivity {
                     }
                 };
 
-                postCommentRequest postCommentRequest = new postCommentRequest(PostNum,userID , text ,responseListener);
+                postCommentRequest postCommentRequest = new postCommentRequest( post ,PostNum,userID , text ,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(post.this);
                 queue.add(postCommentRequest);
             }

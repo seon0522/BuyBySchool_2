@@ -16,13 +16,15 @@ public class postCommentRequest extends StringRequest {
     private Map<String, String> map;
 
 
-    public postCommentRequest(int PostNum, String userID, String text , Response.Listener<String> listener) {
+    public postCommentRequest(String post ,int PostNum, String userID, String text , Response.Listener<String> listener) {
         super(Method.POST,
                 URL,
                 listener,
                 null);
 
         map = new HashMap<>();
+        map.put("mode", post);
+        System.out.println(post);
         map.put("COMMENT",text);
         map.put("POSTNUM", PostNum + "");
 
