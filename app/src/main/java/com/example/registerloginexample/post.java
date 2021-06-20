@@ -52,25 +52,6 @@ public class post extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-//        final ArrayList<String> midList = new ArrayList<String>();
-//        ListView list = (ListView) findViewById(R.id.postlist);
-//
-//        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
-//        list.setAdapter(adapter);
-//
-//        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
-//        Button btnSend = (Button) findViewById(R.id.btnSend);
-//
-//        btnSend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-//                midList.add(edtItem.getText().toString());
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-
-
         Intent intent = getIntent();
         Title = intent.getStringExtra("Title");
         writer = intent.getStringExtra("Writer");
@@ -148,6 +129,66 @@ public class post extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
+            }
+        });
+
+        final ArrayList<String> midList = new ArrayList<String>();
+        ListView list = (ListView) findViewById(R.id.postlist);
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
+        list.setAdapter(adapter);
+
+        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
+        Button btnSend = (Button) findViewById(R.id.btnSend);
+
+        btnSend.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("ddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
+                midList.add(edtItem.getText().toString());
+                adapter.notifyDataSetChanged();
+                String text = edtItem.getText().toString();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            System.out.println(jsonObject);
+//                            for (int i = 0; i < jsonData.length(); i++) {
+//
+//                                Log.i("data", response.toString());
+//                                String title = jsonData.getJSONObject(i).getString("TITLE");
+//                                int price = jsonData.getJSONObject(i).getInt("PRICE");
+//                                String writer = jsonData.getJSONObject(i).getString("SUBTITLE");
+//                                int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
+//                                String Content = jsonData.getJSONObject(i).getString("CONTENT");
+//
+////                                Log.i("data", "json" + PostNum);
+////                                Log.i("data", "json" + title);
+////                                Log.i("data", "json" + price);
+////                                Log.i("data", "json" + writer);
+////                                Log.i("data", "json" + Content);
+//
+//                                adapter.addItem(PostNum, title, R.drawable.splash2222, price, writer, Content);
+//                            }
+//                            Toast.makeText(getApplicationContext(), "게시물을 수정합니다", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
+//                            intent.putExtra("userID", userID);
+//                            startActivity(intent);
+
+                        }catch (Exception e ){
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+
+                postCommentRequest postCommentRequest = new postCommentRequest(PostNum,userID , text ,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(post.this);
+                queue.add(postCommentRequest);
             }
         });
 
