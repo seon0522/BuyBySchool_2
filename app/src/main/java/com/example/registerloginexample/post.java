@@ -40,7 +40,8 @@ public class post extends AppCompatActivity {
     int Price;  //가격
     int PostNum; //게시글 고유 번호
     String userID;  //현재 로그인 한 사용자의 아이디
-    //    final static private String URL = "http://meanzoo.dothome.co.kr/Post.php";
+    String URL = "http://meanzoo.dothome.co.kr/Contentinsert.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,14 +63,51 @@ public class post extends AppCompatActivity {
 
 //        Log.i("postAct","가격" + Price);
 //        Log.i("postAct","writer" + writer);
-        Log.i("postAct","포스트 " + PostNum);
-        Log.i("postAct","포스트 " + userID);
+        Log.i("postAct", "포스트 " + PostNum);
+        Log.i("postAct", "포스트 " + userID);
 
         binding.bookText.setText(Title);
         binding.authorText.setText(writer);
         binding.pricePost.setText("" + Price);
         binding.contentPost.setText(Content);
 
+        final ArrayList<String> midList = new ArrayList<String>();
+        ListView list = (ListView) findViewById(R.id.postlist);
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
+        list.setAdapter(adapter);
+
+        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
+        Button btnSend = (Button) findViewById(R.id.btnSend);
+
+        String text = "test";
+        String post = "test";
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    System.out.println(jsonObject + "==========================jsonobject ==============================");
+
+                    JSONArray jsondate = jsonObject.getJSONArray("response");
+                    System.out.println(jsondate);
+                    for (int i = 0; i < jsondate.length(); i++) {
+                        midList.add(jsondate.getJSONObject(i).getString("COMMENT"));
+                        adapter.notifyDataSetChanged();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        postCommentRequest postCommentRequest = new postCommentRequest(post, PostNum, userID, text, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(post.this);
+        queue.add(postCommentRequest);
 
         binding.postChangeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +143,7 @@ public class post extends AppCompatActivity {
                     }
                 };
 
-                postRequest postRequest = new postRequest(PostNum, userID ,responseListener);
+                postRequest postRequest = new postRequest(PostNum, userID, responseListener);
 //                postRequest.setShouldCache(false);
 
                 RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
@@ -132,15 +170,6 @@ public class post extends AppCompatActivity {
             }
         });
 
-        final ArrayList<String> midList = new ArrayList<String>();
-        ListView list = (ListView) findViewById(R.id.postlist);
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, midList);
-        list.setAdapter(adapter);
-
-        final EditText edtItem = (EditText) findViewById(R.id.edtItem);
-        Button btnSend = (Button) findViewById(R.id.btnSend);
-
         btnSend.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -155,39 +184,16 @@ public class post extends AppCompatActivity {
 
                     @Override
                     public void onResponse(String response) {
-                        try{
-                            JSONObject jsonObject = new JSONObject(response);
-                            System.out.println(jsonObject);
-//                            for (int i = 0; i < jsonData.length(); i++) {
-//
-//                                Log.i("data", response.toString());
-//                                String title = jsonData.getJSONObject(i).getString("TITLE");
-//                                int price = jsonData.getJSONObject(i).getInt("PRICE");
-//                                String writer = jsonData.getJSONObject(i).getString("SUBTITLE");
-//                                int PostNum = jsonData.getJSONObject(i).getInt("POSTNUM");
-//                                String Content = jsonData.getJSONObject(i).getString("CONTENT");
-//
-////                                Log.i("data", "json" + PostNum);
-////                                Log.i("data", "json" + title);
-////                                Log.i("data", "json" + price);
-////                                Log.i("data", "json" + writer);
-////                                Log.i("data", "json" + Content);
-//
-//                                adapter.addItem(PostNum, title, R.drawable.splash2222, price, writer, Content);
-//                            }
-//                            Toast.makeText(getApplicationContext(), "게시물을 수정합니다", Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(getApplicationContext(), MainListActivity.class);
-//                            intent.putExtra("userID", userID);
-//                            startActivity(intent);
+                        try {
 
-                        }catch (Exception e ){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
 
                     }
                 };
 
-                postCommentRequest postCommentRequest = new postCommentRequest( post ,PostNum,userID , text ,responseListener);
+                postCommentRequest postCommentRequest = new postCommentRequest(post, PostNum, userID, text, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(post.this);
                 queue.add(postCommentRequest);
             }
